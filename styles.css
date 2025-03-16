@@ -1,0 +1,346 @@
+html {
+    color-scheme: light;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: #fff5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-image: url('roses-border.svg');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto 200px;
+    transform: rotate(180deg);
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+header, section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+header:hover, section:hover {
+    transform: translateY(-2px);
+}
+
+header h1 {
+    font-family: 'Allura', cursive;
+    color: #e63946;
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: 'Allura', cursive;
+    color: #e63946;
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 0 0 1rem 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+header p, section p {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin: 0.5rem 0;
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.welcome-section img {
+    max-width: 85%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.5s ease;
+}
+
+.welcome-section img:hover {
+    filter: brightness(1) contrast(1.2);
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.event-details-section {
+    text-align: center;
+}
+
+.event-details-section p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.event-details-section b {
+    color: #e63946;
+    font-size: 1.2rem;
+}
+
+.event-details-section em {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.photo-upload-section {
+    text-align: center;
+}
+
+.photo-upload-section img {
+    max-width: 180px;
+    display: block;
+    margin: 1.5rem auto;
+    transition: transform 0.3s ease;
+}
+
+.photo-upload-section img:hover {
+    transform: scale(1.05);
+}
+
+.photo-upload-section a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #e63946;
+    color: white !important;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.photo-upload-section a:hover {
+    background-color: #c1121f;
+    transform: translateY(-2px);
+    color: white !important;
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+form label {
+    margin-bottom: 0.3rem;
+    color: #e63946;
+    font-weight: 500;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ffd6d6;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #e63946;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+form button {
+    padding: 0.8rem 2rem;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+form button:hover {
+    background-color: #c1121f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
+}
+
+.contact-us-section {
+    text-align: center;
+}
+
+.contact-us-section p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+#countdown {
+    font-size: 1.2rem;
+    color: #e63946;
+    font-weight: 500;
+}
+
+a {
+    color: #e63946;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #c1121f;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        padding: 2rem;
+        margin: 2rem auto;
+        border-radius: 20px;
+    }
+
+    header, section {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    header h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2.8rem;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .welcome-section img {
+        max-width: 60%;
+    }
+
+    .photo-upload-section img {
+        max-width: 200px;
+    }
+
+    form {
+        max-width: 600px;
+        gap: 1rem;
+    }
+
+    form label {
+        font-size: 1rem;
+    }
+
+    form input, form textarea {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    form button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #fff5f5 !important;
+        color: #333 !important;
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    header, section {
+        background-color: rgba(255, 255, 255, 0.98) !important;
+    }
+
+    header h1, h2 {
+        color: #e63946 !important;
+    }
+
+    a {
+        color: #e63946 !important;
+    }
+}
+
+@media (prefers-color-scheme: white) {
+    body {
+      background-color: #f9f9f9 !important;
+      color: #333 !important;
+    }
+  
+    .container {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+    }
+  
+    header, section {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+    }
+  
+    header h1, h2 {
+      color: #DAA520 !important;
+    }
+  
+    a {
+      color: #967BB6 !important;
+    }
+  }
+  
