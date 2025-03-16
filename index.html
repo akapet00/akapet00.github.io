@@ -2,28 +2,45 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="color-scheme" content="light">
     <title>👰🏻🤵🏻</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <button class="nav-toggle" aria-label="Toggle navigation menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav class="nav-menu" aria-label="Main navigation">
+        <ul>
+            <li><a href="#welcome">Dobrodošli</a></li>
+            <li><a href="#event-details">Proslava</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="#photos">Fotografije</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <header class="welcome-section">
+        <header class="welcome-section" id="welcome">
             <h1>Milica & Ante are getting married</h1>
             <h2>23.5.2025</h2>
             <img src="milica-i-ante.jpeg" alt="a photo of Milica and Ante">
         </header>
     
-        <section class="event-details-section">
+        <section class="event-details-section" id="event-details">
             <h2>Proslava</h2>
             <p>Okupljanje, <b>15:00</b> <br> <em>Konoba Papalina, K. Novi</em></p>  
             <p>Sveta misa, <b>17:00</b> <br> <em>Crkva sv. Petra, K. Novi</em></p>
             <p>Svečana večera, <b>20:00</b> <br> <em>Sala Nautic, K. Gomilica</em> </p>
         </section>
         
-        <section class="rsvp-section">
+        <section class="rsvp-section" id="rsvp">
             <h2>RSVP</h2>
             <form id="rsvp-form">
                 <label for="name">Ime i prezime</label>
@@ -38,22 +55,53 @@
             </form>
         </section>
         
-        <section class="photo-upload-section">
+        <section class="photo-upload-section" id="photos">
             <h2>Vaše fotografije</h2>
             <img src="qr-code.png" alt="QR Code">
             <p>Skeniraj QR kod, ubaci svoje slike na <a href="https://drive.google.com/drive/folders/1LMA9-c5F_QK3i1aLvh4QqTXsEOTTtjHg?usp=sharing" target="_blank" rel="noopener noreferrer">Google Drive</a> i postani dio naše vječne uspomene</p>
         </section>
         
-        <section class="contact-us-section">
+        <section class="contact-us-section" id="contact">
             <h2>Kontakt</h2>
             <p>Za sve dodatne upite stojimo na raspolaganju</p>
-            <p>Milica, +385 91 604 5928</p>
-            <p>Ante, +385 91 646 5340</p>
+            <p class="contact-item">
+                Milica, +385 91 604 5928
+                <a href="https://wa.me/385916045928" class="whatsapp-button" aria-label="Send WhatsApp message to Milica">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </p>
+            <p class="contact-item">
+                Ante, +385 91 646 5340
+                <a href="https://wa.me/385916465340" class="whatsapp-button" aria-label="Send WhatsApp message to Ante">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </p>
         </section>
         
         <footer>
-            <div id="countdown"></div>
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Dana</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Sati</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minuta</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Sekundi</div>
+                </div>
+            </div>
         </footer>
+    </div>
+    
+    <div class="notification" id="notification">
+        Hvala na obavijesti!
     </div>
     
     <script src="script.js"></script>
