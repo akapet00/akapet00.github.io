@@ -61,17 +61,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const notification = document.getElementById('notification');
     const submitButton = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Add loading state
-        submitButton.classList.add('loading');
-        submitButton.disabled = true;
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const guests = formData.get('guests');
+        const message = formData.get('message');
+
+        // Create email body with form data
+        const emailBody = `RSVP Response from: ${name}
+
+Guest Information:
+${guests}
+
+Message:
+${message}`;
+
+        // Create mailto link with subject and body
+        const mailtoLink = `mailto:ante.casanova@gmail.com?subject=RSVP Response from ${name}&body=${encodeURIComponent(emailBody)}`;
         
-        // Simulate form submission (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
+        // Open default email client in a new tab
+        window.open(mailtoLink, '_blank');
+
+        // Reset form
+        form.reset();
+
+        // Set up focus event listener to show notification when user returns
+        const showNotification = () => {
+            notification.textContent = 'Hvala na obavijesti!';
+            notification.classList.add('show');
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+
+            // Remove the event listener after showing notification
+            window.removeEventListener('focus', showNotification);
+        };
+
+        window.addEventListener('focus', showNotification);
+    });
+
+    // Check if form was submitted when page loads
+    if (sessionStorage.getItem('rsvpSubmitted') === 'true') {
         // Show notification
+        notification.textContent = 'Hvala na obavijesti!';
         notification.classList.add('show');
         
         // Hide notification after 5 seconds
@@ -79,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notification.classList.remove('show');
         }, 5000);
         
-        // Reset form and remove loading state
-        form.reset();
-        submitButton.classList.remove('loading');
-        submitButton.disabled = false;
-    });
+        // Clear the flag
+        sessionStorage.removeItem('rsvpSubmitted');
+    }
 });
