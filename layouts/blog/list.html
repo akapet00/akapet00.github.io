@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article>
+  <div class="fade-in">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+
+  <!-- Filter by categories -->
+  {{ $categories := .Site.Taxonomies.categories }}
+  {{ if $categories }}
+  <div class="filter-links fade-in">
+    <span>Categories:</span>
+    <a href="{{ "blog/" | relURL }}">All</a>
+    {{ range $name, $taxonomy := $categories }}
+    <a href="{{ "categories/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <!-- Posts grouped by year -->
+  {{ $pages := .Pages }}
+  {{ range $pages.GroupByDate "2006" }}
+  <section class="year-section fade-in">
+    <h2>{{ .Key }}</h2>
+    <ul class="post-list">
+      {{ range .Pages }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02" }}</time>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

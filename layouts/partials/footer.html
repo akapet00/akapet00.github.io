@@ -1,0 +1,31 @@
+<div class="footer-content">
+  <p class="footer-cta">Get in touch</p>
+  {{ if and .Site.Params.social.emailUser .Site.Params.social.emailDomain }}
+  <a href="#" class="email-link footer-email" data-user="{{ .Site.Params.social.emailUser }}" data-domain="{{ .Site.Params.social.emailDomain }}">
+    <span class="email-text"></span><span class="email-arrow">&rarr;</span>
+  </a>
+  {{ end }}
+  <div class="social-links">
+    {{ with .Site.Params.social.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener">LinkedIn</a>{{ end }}
+    {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">X</a>{{ end }}
+    {{ with .Site.Params.social.scholar }}<a href="{{ . }}" target="_blank" rel="noopener">Scholar</a>{{ end }}
+    {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+    {{ with .Site.Params.social.medium }}<a href="{{ . }}" target="_blank" rel="noopener">Medium</a>{{ end }}
+  </div>
+  <p class="copyright">&copy; {{ now.Year }} {{ .Site.Params.author }}</p>
+</div>
+<script>
+  (function() {
+    var emailLink = document.querySelector('.email-link');
+    if (emailLink) {
+      var user = emailLink.getAttribute('data-user');
+      var domain = emailLink.getAttribute('data-domain');
+      var email = user + '@' + domain;
+      emailLink.href = 'mailto:' + email;
+      var emailText = emailLink.querySelector('.email-text');
+      if (emailText) emailText.textContent = email;
+      emailLink.removeAttribute('data-user');
+      emailLink.removeAttribute('data-domain');
+    }
+  })();
+</script>

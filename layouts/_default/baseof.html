@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" data-theme="light">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body>
+  <header>
+    {{- partial "header.html" . -}}
+  </header>
+  <main>
+    {{- block "main" . }}{{- end }}
+  </main>
+  {{ if or .IsHome (eq .RelPermalink "/about/") }}
+  <footer>
+    {{- partial "footer.html" . -}}
+  </footer>
+  {{ end }}
+  {{/* Scroll fade-in animation */}}
+  <script>
+  (function() {
+    var fadeEls = document.querySelectorAll('.fade-in');
+    if (fadeEls.length === 0) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeEls.forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+  </script>
+  {{/* KaTeX render call */}}
+  {{ if .Params.math }}
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      throwOnError: false
+    });
+  </script>
+  {{ end }}
+</body>
+</html>

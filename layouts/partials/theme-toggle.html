@@ -1,0 +1,14 @@
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <span class="theme-toggle-icon"></span>
+</button>
+<script>
+  (function() {
+    var toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>

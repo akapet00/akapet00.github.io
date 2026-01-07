@@ -1,0 +1,66 @@
+baseURL = "https://antekapetanovic.com/"
+languageCode = "en-us"
+title = "Ante Kapetanovic"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 3
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 4
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 5
+
+[params]
+  description = "Personal website of Ante Kapetanovic - AI Research Scientist"
+  author = "Ante Kapetanovic"
+
+  [params.social]
+    github = "https://github.com/akapet00"
+    linkedin = "https://linkedin.com/in/akapet00"
+    twitter = "https://x.com/akapet00"
+    scholar = "https://scholar.google.com/citations?user=oAShnpsAAAAJ"
+    medium = "https://medium.com/@akapet00"
+    emailUser = "akapet00"
+    emailDomain = "gmail.com"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [["$$", "$$"], ["\\[", "\\]"]]
+          inline = [["$", "$"], ["\\(", "\\)"]]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    style = "monokailight"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5

@@ -1,0 +1,13 @@
+<nav class="nav">
+  <div class="nav-top">
+    <a href="{{ .Site.BaseURL }}" class="nav-title">{{ .Site.Title }}</a>
+    {{- partial "theme-toggle.html" . -}}
+  </div>
+  <div class="nav-links">
+    {{ range $i, $item := .Site.Menus.main }}
+    {{ $isActive := or (eq $.RelPermalink $item.URL) (and (ne $item.URL "/") (hasPrefix $.RelPermalink $item.URL)) }}
+    {{ if eq $i 2 }}<span class="nav-separator">|</span>{{ end }}
+    <a href="{{ $item.URL }}"{{ if $isActive }} class="active"{{ end }}>{{ $item.Name }}</a>
+    {{ end }}
+  </div>
+</nav>

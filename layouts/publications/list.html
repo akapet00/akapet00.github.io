@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article>
+  <div class="fade-in">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+
+  {{ $pubs := site.Data.publications }}
+  {{ if $pubs }}
+    {{ range $pubs }}
+    <div class="publication fade-in">
+      <div class="publication-title">{{ .title }}</div>
+      <div class="publication-authors">
+        {{- $lastIdx := sub (len .authors) 1 -}}
+        {{- range $i, $author := .authors -}}
+          {{- $isMe := or (in $author "Kapetanovic") (in $author "Kapetanović") -}}
+          {{- if $isMe }}<strong>{{ $author }}</strong>{{ else }}{{ $author }}{{ end -}}
+          {{- if lt $i $lastIdx }}, {{ end -}}
+        {{- end -}}
+      </div>
+      <div class="publication-venue">{{ .venue }}{{ with .year }}, {{ . }}{{ end }}</div>
+      {{ if .links }}
+      <div class="publication-links">
+        {{ with .links.doi }}<a href="{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}
+        {{ with .links.arxiv }}<a href="{{ . }}" target="_blank" rel="noopener">arXiv</a>{{ end }}
+        {{ with .links.url }}<a href="{{ . }}" target="_blank" rel="noopener">Link</a>{{ end }}
+        {{ with .links.pdf }}<a href="{{ . }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  {{ else }}
+    <p class="fade-in">Publications will appear here once added to <code>bibtex/publications.bib</code>.</p>
+  {{ end }}
+</article>
+{{ end }}

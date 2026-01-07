@@ -1,0 +1,29 @@
+{{ define "main" }}
+<article>
+  <div class="fade-in">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+
+  <ul class="project-list">
+    {{ range .Pages.ByDate.Reverse }}
+    <li class="project-item fade-in">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ with .Params.tags }}
+      <div class="tags">
+        {{ range . }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+      <div class="project-links">
+        {{ with .Params.links.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+        {{ with .Params.links.demo }}<a href="{{ . }}" target="_blank" rel="noopener">Demo</a>{{ end }}
+        {{ with .Params.links.paper }}<a href="{{ . }}" target="_blank" rel="noopener">Paper</a>{{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</article>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="fade-in">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ if .Pages }}
+  <ul class="post-list">
+    {{ range .Pages }}
+    <li>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</article>
+{{ end }}

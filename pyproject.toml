@@ -1,0 +1,9 @@
+[project]
+name = "antekapetanovic-site"
+version = "0.1.0"
+description = "Build scripts for antekapetanovic.com"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "bibtexparser>=1.4.3",
+]
