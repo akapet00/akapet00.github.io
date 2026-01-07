@@ -4,10 +4,35 @@
     {{- partial "theme-toggle.html" . -}}
   </div>
   <div class="nav-links">
-    {{ range $i, $item := .Site.Menus.main }}
-    {{ $isActive := or (eq $.RelPermalink $item.URL) (and (ne $item.URL "/") (hasPrefix $.RelPermalink $item.URL)) }}
-    {{ if eq $i 2 }}<span class="nav-separator">|</span>{{ end }}
-    <a href="{{ $item.URL }}"{{ if $isActive }} class="active"{{ end }}>{{ $item.Name }}</a>
-    {{ end }}
+    <div class="nav-primary">
+      {{ range first 2 .Site.Menus.main }}
+      {{ $isActive := or (eq $.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $.RelPermalink .URL)) }}
+      <a href="{{ .URL }}"{{ if $isActive }} class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </div>
+    <span class="nav-separator">|</span>
+    <div class="nav-secondary">
+      {{ range after 2 .Site.Menus.main }}
+      {{ $isActive := or (eq $.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $.RelPermalink .URL)) }}
+      <a href="{{ .URL }}"{{ if $isActive }} class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span class="menu-icon">
+        <span class="menu-icon-bar"></span>
+      </span>
+    </button>
   </div>
 </nav>
+<script>
+  (function() {
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.querySelector('.nav-secondary');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function() {
+        nav.classList.toggle('open');
+        toggle.classList.toggle('open');
+      });
+    }
+  })();
+</script>

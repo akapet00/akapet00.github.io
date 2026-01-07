@@ -2,9 +2,7 @@
 title: "About"
 ---
 
-## About Me
-
-Hi, I’m Ante. I work as a senior **researcher** at [Infobip](https://www.infobip.com/), focusing on how people interact with agentic AI systems and how those systems can be evaluated and improved in practice.
+Hi, I'm Ante. I work as a senior **researcher** at [Infobip](https://www.infobip.com/), focusing on how people interact with agentic AI systems and how those systems can be evaluated and improved in practice.
 
 ### Current Work
 

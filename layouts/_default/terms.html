@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article>
-  <h1>{{ .Title }}</h1>
-  <ul class="post-list">
+  <h1 class="fade-in">{{ .Title }}</h1>
+  <ul class="post-list fade-in">
     {{ range .Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
