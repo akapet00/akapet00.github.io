@@ -2,34 +2,35 @@
 title: "About"
 ---
 
-Hi, I'm Ante. I work as a senior **researcher** at [Infobip](https://www.infobip.com/), focusing on how people interact with agentic AI systems and how those systems can be evaluated and improved in practice.
+I'm a senior **researcher** at [Infobip](https://www.infobip.com/), where I spend my days figuring out how people actually interact with AI systems—and how to make those conversations better.
 
-### Current Work
+### What I Actually Do
 
-At Infobip, I develop and deploy AI-driven solutions for large-scale communication platforms. My work currently centers on:
- - **Conversational aspects of AI**
-    
-    Designing and studying human interaction with conversational agents built on LLMs
- - **AI Evaluation**
-    
-    Using LLMs as automated judges and evaluators
- - **Trustworthy AI**
- 
-    Reducing bias and improving reliability in conversational and evaluation systems
+When you chat with an AI assistant that helps you find what you're looking for or make a decision, someone has to design how that conversation flows, measure whether it's actually helpful, and make sure it's not doing anything weird or unfair. That's me.
 
-### Background
+My work breaks down into three areas:
 
-Before moving into this crazy world of AI, I worked as a senior **data scientist** in retail. I led an assortment-optimization team responsible for monthly performance analytics used by category managers to make decisions on assortment, pricing, promotions, shelf space, and inventory across top supermarket chains in the Balkans.
+- **Conversational recommenders** — Building chat-based systems that help people find things or make decisions through natural back-and-forth dialogue, not just keyword searches.
 
-Earlier in my career, I was a junior **academic researcher** in computational electromagnetism. My research focused on modeling human exposure to radio-frequency electromagnetic fields, alongside teaching courses in wireless systems and electromagnetic compatibility. I earned my PhD in 2023 with the thesis that introduced a novel technique for the efficient assessment of spatially averaged dosimetric quantities on complex 3D surfaces.
+- **AI evaluation** — Figuring out if these systems actually work. Are they accurate? Reliable? Do they do what we claim they do?
 
-### Research Interests
+- **Trustworthy AI** — Making sure AI systems play fair, explain themselves when needed, and don't quietly discriminate or leak private data. The boring-but-important stuff.
 
-In chronological order from the most recent:
-- Bias in LLM-as-a-judge systems
-- Conversational recommender systems
-- Information retrieval
-- Time-series modelling and forecasting
-- 3D point-cloud processing
-- Physics-guided machine learning in 3D
-- Numerical methods for computational problems on 3D point clouds
+### How I Got Here
+
+I started in **academia**, researching how electromagnetic fields from phones and antennas interact with the human body. I taught courses on wireless systems and spent way too much time on 3D simulations. This led to a PhD in 2023, where I developed a faster way to calculate how much RF energy gets absorbed by complex body surfaces. Niche, but someone has to do it.
+
+Then I switched to **retail data science**. I led a team that helped supermarket chains across the Balkans figure out what products to stock, how to price them, and where to put them on shelves. Lots of forecasting, lots of spreadsheets, lots of "why did we order 10,000 units of that?"
+
+Now I'm in **AI research**, which honestly feels like a natural progression &mdash; taking the analytical rigor from physics and the practical messiness of retail and applying it to systems that talk back.
+
+### Things I Find Interesting
+
+Roughly in order of what's keeping me up at night lately:
+
+- When AI judges other AI (and the biases that creep in)
+- Recommending through conversation instead of item grids
+- How search and retrieval actually work under the hood
+- Predicting things over time (harder than it looks)
+- Working with 3D point clouds, meshes, the whole geometry mess
+- Teaching neural networks to respect physics
