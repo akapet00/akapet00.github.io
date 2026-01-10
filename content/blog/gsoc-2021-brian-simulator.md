@@ -2,8 +2,8 @@
 title: "GSoC 2021: Simulation-Based Inference for the Brian Simulator"
 date: 2021-08-23
 categories: ["Open Source"]
-tags: ["GSoC", "Brian2", "Simulation-Based Inference", "Computational Neuroscience"]
-description: "My experience as a Google Summer of Code 2021 student, integrating simulation-based inference into the Brian simulator's model fitting toolbox."
+tags: ["GSoC", "Brian2", "Simulation-Based Inference", "Computational Neuroscience", "Python", "Neural Density Estimation", "Parameter Estimation"]
+description: "Google Summer of Code 2021: Integrating simulation-based inference into the Brian simulator for posterior estimation of neural model parameters using sbi library."
 draft: false
 ---
 

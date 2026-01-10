@@ -2,8 +2,8 @@
 title: "Pendulum Inverse Identification with JAX"
 date: 2021-03-17
 categories: ["Physics-Guided ML"]
-tags: ["JAX", "Inverse Problems", "Autodiff"]
-description: "Using JAX's automatic differentiation to learn physical parameters from noisy observations."
+tags: ["JAX", "Inverse Problems", "Autodiff", "Python", "ODE", "Gradient Descent", "Physics Simulation", "Parameter Estimation"]
+description: "Learn physical parameters from noisy data using JAX automatic differentiation. Tutorial on inverse problems with differentiable ODE solvers and gradient descent."
 math: true
 draft: false
 ---
@@ -29,16 +29,14 @@ First, the imports and the ODE system:
 
 ```python
 import jax.numpy as np
-from jax import value_and_grad, jit
+from jax import jit, random, value_and_grad
 from jax.experimental.ode import odeint
-from jax import random
+
 
 def pend(y, t, b, c):
     theta, omega = y
-    return np.hstack([
-        omega,
-        -b*omega - c*np.sin(theta)
-    ])
+    return np.hstack([omega, -b * omega - c * np.sin(theta)])
+
 
 def model(y0, t, params):
     return odeint(pend, y0, t, *params)
@@ -77,12 +75,14 @@ The key insight: JAX can differentiate through the ODE solver. We define a loss 
 
 ```python
 def mse(y_true, y_pred):
-    return np.mean((y_true - y_pred)**2)
+    return np.mean((y_true - y_pred) ** 2)
+
 
 @jit
 def loss_fn(params, y0, t, y_true):
     y_pred = model(y0, t, params)
     return mse(y_true, y_pred[:, 0])
+
 
 @jit
 def step(params, y0, t, y_true, lr):

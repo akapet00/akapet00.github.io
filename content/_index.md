@@ -21,6 +21,6 @@ experience:
 
 Hi, I'm Ante. I work as a researcher in AI focused on conversational experience at [Infobip](https://www.infobip.com/).
 
-Before my current role, I worked as a data scientist in retail industry.
+Before my current role, I worked as a data scientist in the retail industry.
 
 A lifetime ago, I did research in computational electromagnetics studying the effects of radio waves on human skin.

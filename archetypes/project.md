@@ -6,6 +6,8 @@ description: ""
 links:
   github: ""
   demo: ""
+  paper: ""
+  article: ""
 tags: []
 featured: false
 ---

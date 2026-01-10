@@ -112,18 +112,19 @@ featured: false
 links:
   github: "https://github.com/..."
   demo: "https://..."
-  paper: "https://..."
+  paper: "https://..."      # For academic papers
+  article: "https://..."    # For blog articles (e.g., Medium)
 ```
 
 ## Partials Reference
 
 | Partial | Purpose |
 |---------|---------|
-| `head.html` | Meta tags, CSS, theme init, KaTeX (conditional) |
+| `head.html` | Meta tags, CSS, theme init, KaTeX (conditional), keywords meta tag from tags |
 | `header.html` | Navigation with mobile hamburger menu |
 | `footer.html` | Contact section with email (JS-assembled) and social links |
 | `theme-toggle.html` | Dark/light mode button |
-| `project-links.html` | GitHub/Demo/Paper links for projects |
+| `project-links.html` | GitHub/Demo/Paper/Article links for projects |
 | `post-list-by-year.html` | Posts grouped by year with dates |
 
 ## CSS Architecture
@@ -252,15 +253,22 @@ Edit CSS variables in `assets/css/main.css` under `:root` and `[data-theme="dark
 ### Blog Categories (used so far)
 - "Physics-Guided ML" — Posts about JAX, autodiff, numerical methods
 - "Open Source" — GSoC, contributions to open source projects
+- "Point-Cloud Processing" — 3D geometry, normal estimation, surface extraction
 
 ### Blog Tags (examples)
 - Technical: "JAX", "Autodiff", "Numerical Methods", "Inverse Problems"
 - Project-specific: "GSoC", "Brian2", "Simulation-Based Inference"
+- 3D Geometry: "Point Cloud", "Normal Estimation", "Surface Reconstruction", "LiDAR"
+
+### SEO
+- Description should be keyword-rich (150-160 chars ideal)
+- Tags are automatically converted to `<meta name="keywords">` in head.html
+- Use descriptive, searchable tags for better discoverability
 
 ### Projects
 - Set `featured: true` for projects to highlight on homepage
 - Featured projects appear in the "Projects" section on the homepage
-- Links support: `github`, `demo`, `paper`
+- Links support: `github`, `demo`, `paper`, `article`
 
 ## Development Tips
 
@@ -280,3 +288,14 @@ When adding components similar to existing ones:
 1. Check if shared base styles exist (cards, items, links)
 2. Add to shared selectors if pattern matches
 3. Add component-specific overrides below shared styles
+
+### Code Style in Blog Posts
+Python code snippets should follow PEP8/ruff formatting:
+- Use explicit floats (`1.0` not `1.`)
+- No spaces around `**` exponent operator (`x**2` not `x ** 2`)
+- Two blank lines before top-level function definitions
+- Sort imports alphabetically
+- Use double quotes for strings
+- Comments start with capital letter
+- Print statements, assertions, and logging start with capital letter
+- Use numeric literals with underscores for readability (`20_000`)

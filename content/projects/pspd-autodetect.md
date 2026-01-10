@@ -1,10 +1,11 @@
 ---
 title: "Peak Spatial Power Density Autodetection"
 date: 2023-09-01
-description: "Algorithm for automatically detecting peak spatial-average power density on curved human body surfaces."
+description: "Python algorithm for peak spatial-average power density detection on 3D body surfaces. Automated RF exposure assessment for 5G and millimeter-wave safety compliance."
 links:
   github: "https://github.com/akapet00/pspd-autodetect"
-tags: ["Python", "Dosimetry", "Research"]
+  paper: "https://ieeexplore.ieee.org/abstract/document/10271620/"
+tags: ["Python", "Dosimetry", "Human Exposure", "5G Safety", "Point Cloud", "RF Compliance", "Research"]
 featured: true
 draft: false
 ---
@@ -26,11 +27,3 @@ This algorithm takes a point cloud of any body surface along with power density 
 - Automatically finds worst-case exposure regions
 - Includes demo with realistic human head model
 - Jupyter notebook tutorial for getting started
-
-## Installation
-
-```bash
-git clone https://github.com/akapet00/pspd-autodetect.git
-cd pspd-autodetect
-pip install -r requirements.txt
-```
