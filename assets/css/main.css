@@ -134,6 +134,24 @@ pre code {
   background: none;
 }
 
+/* Hugo syntax highlighting */
+.highlight pre {
+  background-color: var(--code-bg);
+}
+
+[data-theme="dark"] .highlight {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+[data-theme="dark"] .highlight pre {
+  background-color: transparent;
+}
+
+/* Invert images in dark mode (works well for diagrams/plots) */
+[data-theme="dark"] .post-content img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 /* ==========================================================================
    Images & Tables
    ========================================================================== */
@@ -741,11 +759,13 @@ footer {
    ========================================================================== */
 .fade-in {
   opacity: 0;
-  transition: opacity 0.4s ease-out;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .fade-in.visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* Staggered animation for home sections */
