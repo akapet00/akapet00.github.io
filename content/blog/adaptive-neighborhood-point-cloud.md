@@ -44,35 +44,6 @@ For each point:
 2. For each $k$, compute the eigenentropy of the local covariance matrix
 3. Select the $k$ that minimizes eigenentropy
 
-$$
-\begin{array}{l}
-\hline
-\textbf{Algorithm: Optimal Neighborhood Selection} \\
-\hline
-\textbf{Input: } P = \text{point cloud}, \, k_{\min}, \, k_{\max} \\
-\textbf{Output: } k_{\text{opt}}[i] \text{ for each point } p_i \in P \\
-\hline
-\textbf{for each } p_i \in P \textbf{ do} \\
-\quad E_{\min} \leftarrow \infty \\
-\quad k_{\text{opt}}[i] \leftarrow k_{\min} \\[0.5em]
-\quad \triangleright \text{ Step 1: consider a range of neighborhood sizes} \\
-\quad \textbf{for } k \leftarrow k_{\min} \textbf{ to } k_{\max} \textbf{ do} \\
-\quad\quad \mathcal{N}_k \leftarrow k \text{ nearest neighbors of } p_i \\
-\quad\quad \mathbf{C} \leftarrow \text{cov}(\mathcal{N}_k) \\
-\quad\quad \lambda_1, \lambda_2, \lambda_3 \leftarrow \text{eig}(\mathbf{C}) \quad (\lambda_1 \geq \lambda_2 \geq \lambda_3) \\[0.5em]
-\quad\quad \triangleright \text{ Step 2: compute eigenentropy} \\
-\quad\quad \textbf{for } j \leftarrow 1 \textbf{ to } 3 \textbf{ do} \\
-\quad\quad\quad e_j \leftarrow \lambda_j \, / \, (\lambda_1 + \lambda_2 + \lambda_3) \\
-\quad\quad E_\lambda \leftarrow -\sum_{j=1}^{3} e_j \ln(e_j) \\[0.5em]
-\quad\quad \triangleright \text{ Step 3: select } k \text{ that minimizes eigenentropy} \\
-\quad\quad \textbf{if } E_\lambda < E_{\min} \textbf{ then} \\
-\quad\quad\quad E_{\min} \leftarrow E_\lambda \\
-\quad\quad\quad k_{\text{opt}}[i] \leftarrow k \\[0.5em]
-\textbf{return } k_{\text{opt}} \\
-\hline
-\end{array}
-$$
-
 The point automatically gets a small neighborhood if it's near an edge (where mixing scales increases entropy) and a larger one if it's on a smooth surface (where more points reduce noise without increasing entropy).
 
 ## Why This Matters

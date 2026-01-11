@@ -50,37 +50,6 @@ For interior points, test balls in both directions contain neighbors. This confi
 
 ![Interior point: neighbors exist in both directions](/images/blog/surface-point-extraction-interior.png)
 
-### Formal Description
-
-$$
-\begin{array}{l}
-\hline
-\textbf{Algorithm: Surface Point Extraction} \\
-\hline
-\textbf{Input: } P = \text{point cloud}, \, r = \text{neighborhood radius} \\
-\textbf{Output: } S \subseteq P \text{ (surface points)} \\
-\hline
-S \leftarrow \emptyset \\[0.5em]
-\textbf{for each } p_i \in P \textbf{ do} \\[0.5em]
-\quad \triangleright \text{ Step 1: estimate local normal} \\
-\quad \mathcal{N}_r \leftarrow \{p_j \in P : \|p_j - p_i\| \leq r\} \\
-\quad \mathbf{C} \leftarrow \text{cov}(\mathcal{N}_r) \\
-\quad \vec{n}_i \leftarrow \text{eigenvector of } \mathbf{C} \text{ with smallest eigenvalue} \\[0.5em]
-\quad \triangleright \text{ Step 2: position test balls along normal} \\
-\quad c^+ \leftarrow p_i + \frac{r}{2} \vec{n}_i \\
-\quad c^- \leftarrow p_i - \frac{r}{2} \vec{n}_i \\[0.5em]
-\quad \triangleright \text{ Step 3: check for empty half-space} \\
-\quad B^+ \leftarrow \{p_j \in P : \|p_j - c^+\| \leq \frac{r}{2}\} \\
-\quad B^- \leftarrow \{p_j \in P : \|p_j - c^-\| \leq \frac{r}{2}\} \\[0.5em]
-\quad \textbf{if } B^+ = \emptyset \textbf{ or } B^- = \emptyset \textbf{ then} \\
-\quad\quad S \leftarrow S \cup \{p_i\} \\[0.5em]
-\textbf{return } S \\
-\hline
-\end{array}
-$$
-
-Note that the normal direction from PCA could point inward or outward. By testing both directions ($c^+$ and $c^-$), we handle this ambiguity: if either test ball is empty, the point lies on the surface.
-
 ## Choosing the Radius
 
 The radius $r$ controls the scale of analysis:

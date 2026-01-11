@@ -47,6 +47,7 @@ body {
   margin: 0 auto;
   padding: 2rem 1rem;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -740,14 +741,11 @@ footer {
    ========================================================================== */
 .fade-in {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  will-change: opacity, transform;
+  transition: opacity 0.4s ease-out;
 }
 
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Staggered animation for home sections */
