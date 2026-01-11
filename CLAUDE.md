@@ -49,9 +49,11 @@ hugo new projects/my-project.md         # Create new project
 
 ### Theming
 - CSS variables defined in `:root` (light) and `[data-theme="dark"]` (dark)
+- Teal accent color: `#0d9488` (light) / `#2dd4bf` (dark)
 - Theme toggle in `partials/theme-toggle.html`
 - Theme preference saved to localStorage, respects system preference
 - No flash of wrong theme (script in `<head>` sets theme before render)
+- Dark mode: syntax highlighting and blog images auto-invert via CSS filter
 
 ### Navigation
 - Menu items defined in `config.toml` under `[menu]`
@@ -71,8 +73,13 @@ hugo new projects/my-project.md         # Create new project
 - Author name "Kapetanovic" or "Kapetanović" is bolded automatically
 
 ### Animations
-- `.fade-in` class triggers scroll-based fade animation
+- `.fade-in` class triggers scroll-based fade animation (slide up + opacity)
 - IntersectionObserver in `baseof.html` handles visibility
+- Staggered delays on homepage sections
+
+### Mobile
+- Uses `100dvh` (dynamic viewport height) for proper mobile browser support
+- Responsive breakpoint at 600px
 
 ## Key Files to Know
 
@@ -166,7 +173,7 @@ CSS is organized into clearly labeled sections:
 
 **Card components** (`.post-card`, `.project-card`, `.pub-card`):
 - Share border-left accent, padding, and hover transitions
-- Clickable cards (post, project) also share background hover effect
+- Clickable cards (post, project) have background hover + subtle lift effect (`translateY(-2px)`)
 
 **Item components** (`.project-item`, `.publication`):
 - Share margin, padding, and bottom border styling
@@ -287,6 +294,10 @@ hugo server     # Production-like (no drafts)
 - Ensure `draft: false` for content you want published
 - Run `hugo` to verify build succeeds
 - Check responsive layout at 600px breakpoint
+
+### Template Conventions
+- Use `.RelPermalink` for internal links (not `.Permalink`) to work with local dev server
+- Use `.Permalink` only for canonical URLs and Open Graph meta tags
 
 ### Adding New Shared Styles
 When adding components similar to existing ones:
