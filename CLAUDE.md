@@ -2,6 +2,11 @@
 
 Guidance for Claude Code when working on antekapetanovic.com.
 
+## Prerequisites
+
+- Hugo extended edition (`brew install hugo`)
+- uv for Python scripts (`brew install uv`)
+
 ## Quick Commands
 
 ```bash
@@ -199,7 +204,7 @@ CSS is organized into clearly labeled sections:
 - `.publication`, `.publication-title`, `.publication-authors`, `.publication-venue`
 - `.pub-cards`, `.pub-card`
 - `.fade-in` (animation trigger)
-- `.categories`, `.tags`, `.category`, `.tag`
+- `.categories`, `.tags`, `.category`, `.tag`, `.count`
 
 ## Deployment
 
@@ -266,8 +271,8 @@ Edit CSS variables in `assets/css/main.css` under `:root` and `[data-theme="dark
 - Use descriptive, searchable tags for better discoverability
 
 ### Projects
-- Set `featured: true` for projects to highlight on homepage
-- Featured projects appear in the "Projects" section on the homepage
+- Homepage shows the 3 most recent projects (by date)
+- `featured` parameter available in frontmatter for future use
 - Links support: `github`, `demo`, `paper`, `article`
 
 ## Development Tips

@@ -453,6 +453,11 @@ footer {
   color: var(--fg);
 }
 
+.count {
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+
 /* ==========================================================================
    Post List (Blog archive page)
    ========================================================================== */
@@ -737,6 +742,7 @@ footer {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
 }
 
 .fade-in.visible {

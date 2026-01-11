@@ -38,7 +38,7 @@
     </div>
     <div class="post-cards">
       {{ range $posts }}
-      <a href="{{ .Permalink }}" class="post-card">
+      <a href="{{ .RelPermalink }}" class="post-card">
         <span class="post-card-date">{{ .Date.Format "Jan 2006" }}</span>
         <span class="post-card-title">{{ .Title }}</span>
       </a>
@@ -58,7 +58,7 @@
     </div>
     <div class="project-cards">
       {{ range $projects }}
-      <a href="{{ .Permalink }}" class="project-card">
+      <a href="{{ .RelPermalink }}" class="project-card">
         <span class="project-card-title">{{ .Title }}</span>
         {{ with .Description }}<span class="project-card-desc">{{ . }}</span>{{ end }}
       </a>

@@ -21,6 +21,14 @@
     var fadeEls = document.querySelectorAll('.fade-in');
     if (fadeEls.length === 0) return;
 
+    // Immediately show elements already in viewport (no animation delay)
+    fadeEls.forEach(function(el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('visible');
+      }
+    });
+
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -33,7 +41,9 @@
     });
 
     fadeEls.forEach(function(el) {
-      observer.observe(el);
+      if (!el.classList.contains('visible')) {
+        observer.observe(el);
+      }
     });
   })();
   </script>

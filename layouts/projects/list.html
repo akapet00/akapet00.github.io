@@ -8,7 +8,7 @@
   <ul class="project-list">
     {{ range .Pages.ByDate.Reverse }}
     <li class="project-item fade-in">
-      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
       {{ with .Description }}<p>{{ . }}</p>{{ end }}
       {{ with .Params.tags }}
       <div class="tags">
