@@ -37,6 +37,20 @@
     });
   })();
   </script>
+  {{/* External links open in new tab */}}
+  <script>
+  (function() {
+    var links = document.querySelectorAll('a[href]');
+    var host = window.location.hostname;
+    links.forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href.startsWith('http') && !href.includes(host)) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  })();
+  </script>
   {{/* KaTeX render call */}}
   {{ if .Params.math }}
   <script>
