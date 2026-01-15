@@ -35,7 +35,9 @@ We are still far away from this, but the Ralph Wiggum technique, a not-so-new-bu
 
 If you have ever watched The Simpsons, then you must remember Ralph.
 
-![Ralph Wiggum](/images/blog/ralph-wiggum.jpg)
+<p align="center">
+  <img src="/images/blog/ralph-wiggum.webp" alt="Ralph Wiggum"/ width="240 px">
+</p>
 
 Ralph Wiggum is a [well-meaning boy who suffers from either severe learning and social disabilities, and/or some other form of childhood psychiatric disorder](https://simpsons.fandom.com/wiki/Ralph_Wiggum). He is perpetually confused but *extremely persistent*.
 
