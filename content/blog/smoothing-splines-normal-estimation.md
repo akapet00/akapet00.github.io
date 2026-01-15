@@ -10,7 +10,7 @@ math: true
 
 Surface normal estimation is one of those foundational problems in geometry processing that sounds simple until you try to do it well. Given a point cloud, compute the normal vector at each point. Easy, right?
 
-The classic approach — PCA on local neighborhoods — works fine on clean, uniformly sampled data. But real-world point clouds are messy: noisy, irregularly sampled, with varying density. PCA struggles. Neural networks handle these challenges better but require training data, GPU resources, and careful hyperparameter tuning.
+The classic approach, PCA on local neighborhoods, works fine on clean, uniformly sampled data. But real-world point clouds are messy: noisy, irregularly sampled, with varying density. PCA struggles. Neural networks handle these challenges better but require training data, GPU resources, and careful hyperparameter tuning.
 
 What if there's a middle ground?
 
@@ -44,10 +44,10 @@ In benchmarks against PCA and neural network methods, smoothing splines achieve 
 
 Key advantages:
 
-- **No training required** — Works out of the box on any point cloud
-- **Handles irregular sampling** — The smoothing formulation naturally accommodates non-uniform density
-- **Analytically exact normals** — Derivatives come from the spline coefficients, not numerical approximations
-- **Interpretable** — One smoothing parameter with clear geometric meaning
+- **No training required**&mdash;Works out of the box on any point cloud
+- **Handles irregular sampling**&mdash;The smoothing formulation naturally accommodates non-uniform density
+- **Analytically exact normals**&mdash;Derivatives come from the spline coefficients, not numerical approximations
+- **Interpretable**&mdash;One smoothing parameter with clear geometric meaning
 
 The method excels on synthetic and noise-free data, making it ideal for simulation outputs where you control the data quality. For noisier real-world scans, it remains competitive with neural approaches while being far simpler to deploy.
 

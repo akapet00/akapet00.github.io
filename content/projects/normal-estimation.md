@@ -16,17 +16,17 @@ A comparison of several algorithms for computing surface normal vectors from poi
 
 The `primer.ipynb` notebook explores and compares different approaches:
 
-- **PCA-based estimation** — Using principal component analysis on local neighborhoods
-- **Weighted least squares** — Fitting local planes with distance-based weighting
-- **Bivariate smoothing splines** — Fitting smooth B-spline surfaces and computing normals analytically
+- **PCA-based estimation**&mdash;Using principal component analysis on local neighborhoods
+- **Weighted least squares**&mdash;Fitting local planes with distance-based weighting
+- **Bivariate smoothing splines**&mdash;Fitting smooth B-spline surfaces and computing normals analytically
 
 ## Why Smoothing Splines?
 
 While neural network-based methods dominate modern normal estimation, bivariate smoothing splines offer a compelling alternative. They strike a balance between simplicity, efficiency, and robustness, achieving results comparable to some neural network approaches while far outperforming traditional methods like PCA.
 
 Key advantages:
-- **Computational simplicity** — No training required, works out of the box
-- **Robustness to irregular sampling** — Handles non-uniform and inhomogeneous point clouds well
-- **Exceptional on clean data** — Ideal for synthetic data applications where noise is minimal
+- **Computational simplicity**&mdash;No training required, works out of the box
+- **Robustness to irregular sampling**&mdash;Handles non-uniform and inhomogeneous point clouds well
+- **Exceptional on clean data**&mdash;Ideal for synthetic data applications where noise is minimal
 
 The smoothing spline approach fits a continuous surface to local point neighborhoods, allowing normals to be computed analytically from the surface derivatives rather than estimated from discrete point configurations.

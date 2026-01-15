@@ -51,9 +51,8 @@ hugo new projects/my-project.md         # Create new project
 - CSS variables defined in `:root` (light) and `[data-theme="dark"]` (dark)
 - Teal accent color: `#0d9488` (light) / `#2dd4bf` (dark)
 - Theme toggle in `partials/theme-toggle.html`
-- Theme preference saved to localStorage, respects system preference
+- Light mode is always the default; user preference saved to localStorage
 - No flash of wrong theme (script in `<head>` sets theme before render)
-- Dark mode: syntax highlighting and blog images auto-invert via CSS filter
 
 ### Navigation
 - Menu items defined in `config.toml` under `[menu]`
@@ -257,13 +256,18 @@ Edit CSS variables in `assets/css/main.css` under `:root` and `[data-theme="dark
 
 ## Content Conventions
 
+### Typography
+- Use `&mdash;` HTML entity for em dashes (not `—` Unicode character)
+- No spaces around em dashes: `word&mdash;word` not `word &mdash; word`
+
 ### Images
 - Store in `static/images/blog/` for blog posts
 - Naming: `{post-slug}-{description}.{ext}` (e.g., `pendulum-inverse-identification-jax-training.png`)
 - Reference in markdown as `/images/blog/filename.ext`
 
 ### Blog Categories (used so far)
-- "Physics-Guided ML" — Posts about JAX, autodiff, numerical methods
+- "Agentic AI" — Autonomous agents, coding assistants, context engineering
+- "Physics-Guided ML" — JAX, autodiff, numerical methods
 - "Open Source" — GSoC, contributions to open source projects
 - "Point-Cloud Processing" — 3D geometry, normal estimation, surface extraction
 

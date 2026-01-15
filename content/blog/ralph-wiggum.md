@@ -43,7 +43,7 @@ This extreme persistence motivated the creator of the Ralph Wiggum technique, Ge
 
 Ralph works great for tasks that are long running, for projects where you are sure that you know what you're building, and for tasks that benefit from continuous iteration without a human in the loop.
 
-This means that Ralph is not ideal for exploratory work where the main evaluator still has to be a human. Also for small tasks that are easily one-shotted and fit the context fairly easily, far away from the "[dumb zone](https://www.youtube.com/watch?v=rmvDxxNubIg)"—the performance degradation that tends to occur at or around 40% of context usage, where models start to lose coherence.
+This means that Ralph is not ideal for exploratory work where the main evaluator still has to be a human. Also for small tasks that are easily one-shotted and fit the context fairly easily, far away from the "[dumb zone](https://www.youtube.com/watch?v=rmvDxxNubIg)," the performance degradation that tends to occur at or around 40% of context usage, where models start to lose coherence.
 
 But let's see how Ralph works in practice.
 
@@ -55,7 +55,7 @@ I decided to try out Ralph on something that is fairly common to all of us and t
 
 This is critical, but very little talked about.
 
-The very idea is to leave Ralph (remember that it is just a simple way of looping your coding agent until all the tasks are done) to cook without your constant input. This means that if you have to manually intervene to give permission prompts—the whole purpose of Ralph falls through.
+The very idea is to leave Ralph (remember that it is just a simple way of looping your coding agent until all the tasks are done) to cook without your constant input. This means that if you have to manually intervene to give permission prompts, the whole purpose of Ralph falls through.
 
 There are two ways to go about it.
 
@@ -166,11 +166,11 @@ This is in line with what [Anthropic suggests](https://www.anthropic.com/enginee
 >
 > The key insight here was finding a way for agents to quickly understand the state of work when starting with a fresh context window, which is accomplished with the **claude-progress.txt** file alongside the git history. Inspiration for these practices came from knowing what effective software engineers do every day.
 
-In my case, I don't want to give away too much info to other agents to avoid context pollution—I just want agents to know what was done previously and what to do next. However, it is good to have some kind of log to be able to track any errors that may occur.
+In my case, I don't want to give away too much info to other agents to avoid context pollution. I just want agents to know what was done previously and what to do next. However, it is good to have some kind of log to be able to track any errors that may occur.
 
 ## Is Ralph Expensive?
 
-Well, it could be. But since the core idea of Ralph is to use as little of the context window as possible to solve each task, it shouldn't be. Namely, with specs written well enough—which means writing an elaborate PRD and decomposing it into a number of user stories that fit at most 1 context window—costs should be under control. If you set max number of iterations `N` to solve `N` tasks, a rough estimate for the upper bound on costs is:
+Well, it could be. But since the core idea of Ralph is to use as little of the context window as possible to solve each task, it shouldn't be. Namely, with specs written well enough (which means writing an elaborate PRD and decomposing it into a number of user stories that fit at most 1 context window), costs should be under control. If you set max number of iterations `N` to solve `N` tasks, a rough estimate for the upper bound on costs is:
 
 ```
 cost = N * (input_tokens * input_price + output_tokens * output_price)
@@ -251,9 +251,9 @@ There are [a few critics](https://www.reddit.com/r/ClaudeCode/comments/1l91bwp/c
 >
 > Resetting cognition is only defensible when: the external world state is untrusted, or a new constraint/objective is introduced. Ralph does neither. It just presses replay.
 >
-> Bottom line: Running the same prompt while making the model forget is not disciplined—it's just re-rolling. Determinism without memory is just wasted compute.
+> Bottom line: Running the same prompt while making the model forget is not disciplined; it's just re-rolling. Determinism without memory is just wasted compute.
 
-And even though this critique is fairly elaborate, it misses the point. The point is that Ralph wasn't really known for being intelligent. Persistent—yes, but intelligent... not his thing.
+And even though this critique is fairly elaborate, it misses the point. The point is that Ralph wasn't really known for being intelligent. Persistent&mdash;yes, but intelligent... not his thing.
 
 This means that running the same prompt over and over isn't a limitation per se. You can instruct it to use particular files for task lists, planning, and executing specs to ensure it's ready to move onto the next phase. The best approach is to spend time developing a plan and breaking it down into small tasks (user stories) you would give a junior engineer (your own Ralph) and let them do their thing.
 
@@ -274,4 +274,4 @@ Let's wrap up with Ralph's creator's beautiful description of Ralph:
 
 ---
 
-*Note: I wrote this article myself, not an LLM. So if you see em dashes here and there—that's how I roll ¯\(ツ)/¯*
+*Note: I wrote this article myself, not an LLM. So if you see em dashes here and there&mdash;that's how I roll ¯\(ツ)/¯*

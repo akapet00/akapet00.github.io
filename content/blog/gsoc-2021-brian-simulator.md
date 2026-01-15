@@ -40,7 +40,7 @@ The code is available in the [brian2modelfitting repository](https://github.com/
 
 **Soft skills**: As a non-native English speaker, I became more confident communicating with researchers in the field. Weekly meetings with Marcel taught me how to scope work, handle blocking issues, and maintain momentum on a long project.
 
-**Research breadth**: Coming from computational electromagnetism, this project pushed me into computational neuroscience. The techniques I learned — particularly around inference and parameter estimation — have applications back in my own field.
+**Research breadth**: Coming from computational electromagnetism, this project pushed me into computational neuroscience. The techniques I learned, particularly around inference and parameter estimation, have applications back in my own field.
 
 ## Advice for Future GSoC Students
 

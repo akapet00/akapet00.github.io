@@ -65,7 +65,7 @@ key = random.PRNGKey(0)
 noisy_theta = theta + 0.3 * theta * random.normal(key, shape=theta.shape)
 ```
 
-The plot below shows the true dynamics — angle $\theta(t)$ in magenta and angular velocity $\omega(t)$ in cyan — along with the noisy training data (magenta dots):
+The plot below shows the true dynamics (angle $\theta(t)$ in magenta and angular velocity $\omega(t)$ in cyan) along with the noisy training data (magenta dots):
 
 ![Training data and true solution](/images/blog/pendulum-inverse-identification-jax-training.png)
 
@@ -123,7 +123,7 @@ The fitted trajectory (dashed black lines) matches the true solution almost perf
 
 ## Why This Matters
 
-This approach — differentiating through a physics simulator — is powerful. You can:
+This approach, differentiating through a physics simulator, is powerful. You can:
 
 - Learn physical constants from real-world data
 - Calibrate simulation parameters

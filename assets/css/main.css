@@ -139,17 +139,8 @@ pre code {
   background-color: var(--code-bg);
 }
 
-[data-theme="dark"] .highlight {
-  filter: invert(1) hue-rotate(180deg);
-}
-
 [data-theme="dark"] .highlight pre {
   background-color: transparent;
-}
-
-/* Invert images in dark mode (works well for diagrams/plots) */
-[data-theme="dark"] .post-content img {
-  filter: invert(1) hue-rotate(180deg);
 }
 
 /* ==========================================================================
