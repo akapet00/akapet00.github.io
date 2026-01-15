@@ -762,11 +762,21 @@ footer {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  animation: fadeInFallback 0.5s ease-out 0.1s forwards;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: none;
+}
+
+/* Fallback animation if JS doesn't add .visible class */
+@keyframes fadeInFallback {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Staggered animation for home sections */
