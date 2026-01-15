@@ -44,10 +44,10 @@ In benchmarks against PCA and neural network methods, smoothing splines achieve 
 
 Key advantages:
 
-- **No training required**&mdash;Works out of the box on any point cloud
-- **Handles irregular sampling**&mdash;The smoothing formulation naturally accommodates non-uniform density
-- **Analytically exact normals**&mdash;Derivatives come from the spline coefficients, not numerical approximations
-- **Interpretable**&mdash;One smoothing parameter with clear geometric meaning
+- **No training required** &mdash; Works out of the box on any point cloud
+- **Handles irregular sampling** &mdash; The smoothing formulation naturally accommodates non-uniform density
+- **Analytically exact normals** &mdash; Derivatives come from the spline coefficients, not numerical approximations
+- **Interpretable** &mdash; One smoothing parameter with clear geometric meaning
 
 The method excels on synthetic and noise-free data, making it ideal for simulation outputs where you control the data quality. For noisier real-world scans, it remains competitive with neural approaches while being far simpler to deploy.
 

@@ -15,18 +15,18 @@ A modernized version of the popular [Algorithmic Trading Course](https://www.you
 
 The freeCodeCamp course teaches three strategies:
 
-- **Equal-Weight S&P 500**&mdash;Replicates an index fund by equally weighting all constituents
-- **Quantitative Momentum**&mdash;Ranks stocks based on price performance
-- **Quantitative Value**&mdash;Identifies undervalued stocks using multiple valuation metrics
+- **Equal-Weight S&P 500** &mdash; Replicates an index fund by equally weighting all constituents
+- **Quantitative Momentum** &mdash; Ranks stocks based on price performance
+- **Quantitative Value** &mdash; Identifies undervalued stocks using multiple valuation metrics
 
 ## What's New
 
 The original course relied on the IEX Cloud API, which has since become deprecated and inaccessible for most users. This repository fixes that and adds features the original lacked:
 
-- **Working data source**&mdash;Replaced IEX Cloud with yfinance for reliable, free market data
-- **Multithreaded fetching**&mdash;Optimized data retrieval across hundreds of securities
-- **Backtesting**&mdash;Added performance validation against SPY benchmark
-- **Portfolio optimization**&mdash;Integrated cvxpy for proper mean-variance optimization in the value strategy
+- **Working data source** &mdash; Replaced IEX Cloud with yfinance for reliable, free market data
+- **Multithreaded fetching** &mdash; Optimized data retrieval across hundreds of securities
+- **Backtesting** &mdash; Added performance validation against SPY benchmark
+- **Portfolio optimization** &mdash; Integrated cvxpy for proper mean-variance optimization in the value strategy
 
 ## Why This Matters
 

@@ -27,7 +27,7 @@ Conceptually, this is not that radical a departure. It mirrors the historical tr
 
 This pattern has repeated often enough that it has given rise to a familiar trope: "real programmers" do not rely on abstractions. A classic example of this sentiment can be found in the satirical article titled [Real Programmers Don't Use PASCAL](https://homepages.inf.ed.ac.uk/rni/papers/realprg.html). History has consistently shown this belief to be misguided as it often turns out that abstractions are precisely what enable leverage and scale.
 
-However, the true value proposition of AI is *not* that it acts as a highly knowledgeable code companion that answers your questions well, but has the memory of a goldfish. Such a system still requires us, the user, to micromanage intent, design, and execution. The real breakthrough would be an AI operating at a [J.A.R.V.I.S.](https://en.wikipedia.org/wiki/J.A.R.V.I.S.)-level of competence. It should understand *what* needs to be done, *why* it matters, *how* it should be approached, and *when* it should be executed after receiving a clear, but very high-level instruction.
+However, the true value proposition of AI is *not* that it acts as a highly knowledgeable code companion that answers your questions well, but has the memory of a goldfish. Such a system still requires us &mdash; the user &mdash; to micromanage intent, design, and execution. The real breakthrough would be an AI operating at a [J.A.R.V.I.S.](https://en.wikipedia.org/wiki/J.A.R.V.I.S.)-level of competence. It should understand *what* needs to be done, *why* it matters, *how* it should be approached, and *when* it should be executed after receiving a clear, high-level instruction.
 
 We are still far away from this, but the Ralph Wiggum technique, a not-so-new-but-recently-very-hyped paradigm for agentic coding, could be a step toward that vision.
 
@@ -51,7 +51,7 @@ But let's see how Ralph works in practice.
 
 ## Running Ralph
 
-I decided to try out Ralph on something that is fairly common to all of us and that pretty much nobody likes to do: *refactoring* and *testing*. No matter what type of code you write, you still have to do your due diligence and keep your code [decoupled](https://goodresearch.dev/decoupled), [tested](https://goodresearch.dev/testing), and [well documented](https://goodresearch.dev/docs).
+I decided to try out Ralph on something that is fairly common to all software engineers and that pretty much nobody likes to do: *refactoring* and *testing*. No matter what type of code you write, you still have to do your due diligence and keep your code [decoupled](https://goodresearch.dev/decoupled), [tested](https://goodresearch.dev/testing), and [well documented](https://goodresearch.dev/docs).
 
 ### Step 1. Enable Sandboxing
 
@@ -102,7 +102,7 @@ Now, you have to flesh out your idea and start with a comprehensive product requ
 
 What I did is just started to talk to an instance of Claude Code and used a skill I wrote specifically for writing PRDs. I got the inspiration for this from [Ryan Carson's guide to Ralph](https://x.com/ryancarson/status/1879228371712135632) and [his version of the PRD skill](https://github.com/snarktank/ralph/blob/main/skills/prd/SKILL.md). In a nutshell, the PRD should present a blueprint defining what a product or feature should do, its purpose, target users, and goals, serving as a central guide for development, design, and stakeholders, focusing on user needs rather than implementation.
 
-After a lot of back and forth, it took around 39% of the context window available with Claude Opus (roughly 80k tokens out of ~200k) to complete the PRD for the task of refactoring a part of my codebase.
+After a lot of back and forth, it took around 39% of the context window available with Claude Opus 4.5 (roughly 80k tokens out of ~200k) to complete the PRD for the task of refactoring a part of my codebase.
 
 This means that just the process of brainstorming and writing the PRD led me to the brink of the dumb zone...
 
@@ -170,20 +170,6 @@ This is in line with what [Anthropic suggests](https://www.anthropic.com/enginee
 
 In my case, I don't want to give away too much info to other agents to avoid context pollution. I just want agents to know what was done previously and what to do next. However, it is good to have some kind of log to be able to track any errors that may occur.
 
-## Is Ralph Expensive?
-
-Well, it could be. But since the core idea of Ralph is to use as little of the context window as possible to solve each task, it shouldn't be. Namely, with specs written well enough (which means writing an elaborate PRD and decomposing it into a number of user stories that fit at most 1 context window), costs should be under control. If you set max number of iterations `N` to solve `N` tasks, a rough estimate for the upper bound on costs is:
-
-```
-cost = N * (input_tokens * input_price + output_tokens * output_price)
-```
-
-Keep in mind that output tokens are typically 5x more expensive than input tokens. For Claude Opus, that's roughly $15 per million input tokens and $75 per million output tokens. A single iteration that fills the context might cost $3-5, so 10 iterations could run $30-50.
-
-Is that a lot? Depends on who you ask I guess...
-
-And yes, it could happen that 1 task needs more than 1 context window, but this is on you.
-
 ### Step 5. Let Ralph Ralph
 
 Remember that Ralph is just a loop?
@@ -233,6 +219,20 @@ Only when ALL tasks have passes set to true, output <promise>COMPLETE</promise>.
 
 Overall, it ran for about half an hour and refactored my codebase successfully in 7 iterations!
 
+## Is Ralph Expensive?
+
+Well, it could be. But since the core idea of Ralph is to use as little of the context window as possible to solve each task, it shouldn't be. Namely, with specs written well enough (which means writing an elaborate PRD and decomposing it into a number of user stories that fit at most 1 context window), costs should be under control. If you set max number of iterations `N` to solve `N` tasks, a rough estimate for the upper bound on costs is:
+
+```
+cost = N * (input_tokens * input_price + output_tokens * output_price)
+```
+
+Keep in mind that output tokens are typically 5x more expensive than input tokens. For Claude Opus, that's roughly $15 per million input tokens and $75 per million output tokens. A single iteration that fills the context might cost $3-5, so 10 iterations could run $30-50.
+
+Is that a lot? Depends on who you ask I guess...
+
+And yes, it could happen that 1 task needs more than 1 context window, but this is on you.
+
 ## A Note on the Claude Code Plugin
 
 There is also an [official Claude Code plugin](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum) available that after installation enables Ralph out of the box. It turns out, however, that the [loop doesn't work as intended](https://www.reddit.com/r/ClaudeCode/comments/1lc4vg0/trust_me_bro_most_people_are_running_ralph_wiggum/):
@@ -241,7 +241,7 @@ There is also an [official Claude Code plugin](https://github.com/anthropics/cla
 >
 > The original bash loop (from Geoffrey Huntley) starts a fresh context window each iteration. That's a fundamental difference and IMHO the bash loop is way better for actual long-running tasks (but since it runs headless, it can be a bit more difficult to set up/understand what's going on).
 
-Also check out [this guide](https://github.com/JeredBlu/guides/blob/main/Ralph_Wiggum_Guide.md) by Jered Blumenfeld where he shows how the plugin is inferior to the original and much simpler Ralph technique.
+Also check out [this guide](https://github.com/JeredBlu/guides/blob/main/Ralph_Wiggum_Guide.md) by Jered Blumenfeld where he shows how the plugin is inferior to the original Ralph technique.
 
 ## Criticism
 
@@ -255,9 +255,9 @@ There are [a few critics](https://www.reddit.com/r/ClaudeCode/comments/1l91bwp/c
 >
 > Bottom line: Running the same prompt while making the model forget is not disciplined; it's just re-rolling. Determinism without memory is just wasted compute.
 
-And even though this critique is fairly elaborate, it misses the point. The point is that Ralph wasn't really known for being intelligent. Persistent&mdash;yes, but intelligent... not his thing.
+And even though this critique is fairly elaborate, it misses the point. The point is that Ralph wasn't really known for being intelligent. Persistent &mdash; yes, but intelligent... not his thing.
 
-This means that running the same prompt over and over isn't a limitation per se. You can instruct it to use particular files for task lists, planning, and executing specs to ensure it's ready to move onto the next phase. The best approach is to spend time developing a plan and breaking it down into small tasks (user stories) you would give a junior engineer (your own Ralph) and let them do their thing.
+This means that running the same prompt over and over isn't a limitation per se. You can instruct it to use particular files for task lists, planning, and executing specs to ensure it's ready to move onto the next phase. The best approach is to spend time developing a plan and breaking it down into small tasks (user stories) you would give a junior engineer (your coding agent).
 
 ## Key Takeaways
 

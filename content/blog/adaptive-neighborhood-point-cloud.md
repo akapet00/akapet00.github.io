@@ -34,7 +34,7 @@ The eigenentropy follows Shannon's formula:
 
 $$E_\lambda = -\sum_{i=1}^{3} e_i \ln(e_i)$$
 
-Low entropy means the eigenvalues are concentrated&mdash;the local structure is well-defined. High entropy means the eigenvalues are spread out&mdash;the neighborhood mixes different geometric structures.
+Low entropy means the eigenvalues are concentrated &mdash; the local structure is well-defined. High entropy means the eigenvalues are spread out &mdash; the neighborhood mixes different geometric structures.
 
 ## The Algorithm
 
@@ -48,14 +48,14 @@ The point automatically gets a small neighborhood if it's near an edge (where mi
 
 ## Why This Matters
 
-Features computed with adaptive neighborhoods are more distinctive. When you feed them into a classifier for semantic segmentation&mdash;labeling points as ground, building, vegetation&mdash;accuracy improves significantly compared to fixed-$k$ approaches.
+Features computed with adaptive neighborhoods are more distinctive. When you feed them into a classifier for semantic segmentation &mdash; labeling points as ground, building, vegetation &mdash; accuracy improves significantly compared to fixed-$k$ approaches.
 
 The benefits compound:
 
-- **Better normals**&mdash;Each point uses the scale that best captures its local surface
-- **Sharper features**&mdash;Edges and corners retain their geometric signatures
-- **Robust to density variation**&mdash;Dense and sparse regions each get appropriate treatment
-- **No manual tuning**&mdash;The entropy criterion is parameter-free
+- **Better normals** &mdash; Each point uses the scale that best captures its local surface
+- **Sharper features** &mdash; Edges and corners retain their geometric signatures
+- **Robust to density variation** &mdash; Dense and sparse regions each get appropriate treatment
+- **No manual tuning** &mdash; The entropy criterion is parameter-free
 
 This is particularly valuable for LiDAR data, where point density varies with distance from the sensor, and for photogrammetric reconstructions with uneven coverage.
 

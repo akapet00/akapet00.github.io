@@ -65,9 +65,9 @@ The technique exploits a fundamental property of surfaces: they separate interio
 
 This is particularly useful for:
 
-- **Reducing data size**&mdash;Keep only the points that matter for surface analysis
-- **Preprocessing for meshing**&mdash;Clean volumetric data before surface reconstruction
-- **Feature extraction**&mdash;Focus geometric features on the actual surface
+- **Reducing data size** &mdash; Keep only the points that matter for surface analysis
+- **Preprocessing for meshing** &mdash; Clean volumetric data before surface reconstruction
+- **Feature extraction** &mdash; Focus geometric features on the actual surface
 
 ## Read More
 
