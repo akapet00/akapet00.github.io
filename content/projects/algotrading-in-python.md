@@ -15,9 +15,9 @@ A modernized version of the popular [Algorithmic Trading Course](https://www.you
 
 The freeCodeCamp course teaches three strategies:
 
-- **Equal-Weight S&P 500** &mdash; Replicates an index fund by equally weighting all constituents
-- **Quantitative Momentum** &mdash; Ranks stocks based on price performance
-- **Quantitative Value** &mdash; Identifies undervalued stocks using multiple valuation metrics
+- **Equal-weight S&P 500** &mdash; Replicates an index fund by equally weighting all constituents
+- **Quantitative momentum** &mdash; Ranks stocks based on price performance
+- **Quantitative value** &mdash; Identifies undervalued stocks using multiple valuation metrics
 
 ## What's New
 

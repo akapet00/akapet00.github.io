@@ -133,7 +133,7 @@ The plan is a simple markdown file with user stories written in JSON format. Her
     "Add type hints where applicable",
     "All tests pass"
   ],
-  "passes": true
+  "passes": false
 }
 ```
 
@@ -273,7 +273,3 @@ This means that running the same prompt over and over isn't a limitation per se.
 Let's wrap up with Ralph's creator's beautiful description of Ralph:
 
 > The beauty of Ralph is that it is deterministically bad in an undeterministic world.
-
----
-
-*Note: I wrote this article myself, not an LLM. So if you see em dashes here and there&mdash;that's how I roll ¯\(ツ)/¯*
