@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-I'm a senior **researcher** at [Infobip](https://www.infobip.com/), where I spend my days figuring out how people actually interact with AI systems—and how to make those conversations better.
+I'm a senior **researcher** at [Infobip](https://www.infobip.com/), where I spend my days figuring out how people actually interact with AI systems and how to make those conversations better.
 
 ### What I Actually Do
 
