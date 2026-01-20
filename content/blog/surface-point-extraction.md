@@ -18,7 +18,7 @@ The key insight is geometric: a point lies on the surface if there's "empty spac
 
 We can detect this asymmetry by estimating the local normal vector and checking whether points exist in the direction the normal points.
 
-![Surface extraction concept in 2D](/images/blog/surface-point-extraction-concept.svg)
+![Surface extraction concept in 2D](/images/blog/surface-point-extraction/surface-point-extraction-1.svg)
 
 The figure above shows the idea in 2D. For a surface point, the normal vector points outward into empty space. For an interior point, neighbors exist on both sides.
 
@@ -30,13 +30,13 @@ The method processes each point independently in three steps.
 
 Find all neighbors within radius $r$ and compute the normal vector via PCA. The eigenvector corresponding to the smallest eigenvalue of the covariance matrix gives the normal direction.
 
-![Step 1: Local neighborhood and normal estimation](/images/blog/surface-point-extraction-step1.png)
+![Step 1: Local neighborhood and normal estimation](/images/blog/surface-point-extraction/surface-point-extraction-2.png)
 
 ### Step 2: Position Test Balls
 
 Place a test ball of radius $r/2$ centered at distance $r/2$ along the normal direction.
 
-![Step 2: Test ball positioned along normal](/images/blog/surface-point-extraction-step2.png)
+![Step 2: Test ball positioned along normal](/images/blog/surface-point-extraction/surface-point-extraction-3.png)
 
 ### Step 3: Check for Empty Space
 
@@ -44,11 +44,11 @@ If the test ball is empty, the point lies on the surface as there's nothing but 
 
 Since PCA doesn't determine normal orientation (it could point inward or outward), we check both directions. If the normal happens to point inward, the test ball on that side will contain points, but the opposite direction will be empty.
 
-![Checking the opposite direction reveals empty space](/images/blog/surface-point-extraction-step3.png)
+![Checking the opposite direction reveals empty space](/images/blog/surface-point-extraction/surface-point-extraction-4.png)
 
 For interior points, test balls in both directions contain neighbors. This confirms the point is not on the surface.
 
-![Interior point: neighbors exist in both directions](/images/blog/surface-point-extraction-interior.png)
+![Interior point: neighbors exist in both directions](/images/blog/surface-point-extraction/surface-point-extraction-5.png)
 
 ## Choosing the Radius
 

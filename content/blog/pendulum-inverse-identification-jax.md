@@ -67,7 +67,7 @@ noisy_theta = theta + 0.3 * theta * random.normal(key, shape=theta.shape)
 
 The plot below shows the true dynamics (angle $\theta(t)$ in magenta and angular velocity $\omega(t)$ in cyan) along with the noisy training data (magenta dots):
 
-![Training data and true solution](/images/blog/pendulum-inverse-identification-jax-training.png)
+![Training data and true solution](/images/blog/pendulum-inverse-identification-jax/pendulum-inverse-identification-jax-1.png)
 
 ## Learning Parameters with Gradient Descent
 
@@ -119,7 +119,7 @@ c (gravity):   5.00  |  7.81   |  4.98
 
 The fitted trajectory (dashed black lines) matches the true solution almost perfectly, recovering the underlying dynamics despite measurement noise:
 
-![Fitted solution vs true solution](/images/blog/pendulum-inverse-identification-jax-solution.png)
+![Fitted solution vs true solution](/images/blog/pendulum-inverse-identification-jax/pendulum-inverse-identification-jax-2.png)
 
 ## Why This Matters
 

@@ -258,12 +258,13 @@ Edit CSS variables in `assets/css/main.css` under `:root` and `[data-theme="dark
 
 ### Typography
 - Use `&mdash;` HTML entity for em dashes (not `—` Unicode character)
-- No spaces around em dashes: `word&mdash;word` not `word &mdash; word`
+- Use spaces around em dashes: `word &mdash; word` not `word&mdash;word`
 
 ### Images
-- Store in `static/images/blog/` for blog posts
-- Naming: `{post-slug}-{description}.{ext}` (e.g., `pendulum-inverse-identification-jax-training.png`)
-- Reference in markdown as `/images/blog/filename.ext`
+- Store in `static/images/blog/{post-slug}/` for blog posts (each blog has its own subfolder)
+- Naming: `{post-slug}-{number}.{ext}` where number represents order of appearance in the blog text
+- Example: `static/images/blog/pendulum-inverse-identification-jax/pendulum-inverse-identification-jax-1.png`
+- Reference in markdown as `/images/blog/{post-slug}/{post-slug}-{number}.ext`
 
 ### Blog Categories (used so far)
 - "Agentic AI" — Autonomous agents, coding assistants, context engineering
