@@ -10,7 +10,7 @@
   <section class="home-section fade-in">
     <div class="section-header">
       <h2>Experience</h2>
-      <a href="{{ "about/" | relURL }}" class="view-all">View all →</a>
+      <a href="{{ "about/" | relURL }}" class="view-all"><span class="view-all-text">View all</span><span class="view-all-arrow">→</span></a>
     </div>
     <div class="timeline">
       {{ range . }}
@@ -34,7 +34,7 @@
   <section class="home-section fade-in">
     <div class="section-header">
       <h2>Recent Writing</h2>
-      <a href="{{ "blog/" | relURL }}" class="view-all">View all →</a>
+      <a href="{{ "blog/" | relURL }}" class="view-all"><span class="view-all-text">View all</span><span class="view-all-arrow">→</span></a>
     </div>
     <div class="post-cards">
       {{ range $posts }}
@@ -54,7 +54,7 @@
   <section class="home-section fade-in">
     <div class="section-header">
       <h2>Projects</h2>
-      <a href="{{ "projects/" | relURL }}" class="view-all">View all →</a>
+      <a href="{{ "projects/" | relURL }}" class="view-all"><span class="view-all-text">View all</span><span class="view-all-arrow">→</span></a>
     </div>
     <div class="project-cards">
       {{ range $projects }}
@@ -74,7 +74,7 @@
   <section class="home-section fade-in">
     <div class="section-header">
       <h2>Selected Publications</h2>
-      <a href="{{ "publications/" | relURL }}" class="view-all">View all →</a>
+      <a href="{{ "publications/" | relURL }}" class="view-all"><span class="view-all-text">View all</span><span class="view-all-arrow">→</span></a>
     </div>
     <div class="pub-cards">
       {{ range $pubs }}

@@ -215,11 +215,11 @@ th {
 }
 
 .nav-links a:hover {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .nav-links a.active {
-  color: var(--fg);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -370,8 +370,7 @@ footer {
 }
 
 .social-links a:hover {
-  color: var(--fg);
-  text-decoration: none;
+  color: var(--accent);
 }
 
 .footer-content .copyright {
@@ -461,7 +460,7 @@ footer {
 
 .category:hover,
 .tag:hover {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .count {
@@ -569,7 +568,7 @@ footer {
 
 .filter-links a:hover,
 .filter-links a.active {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 /* ==========================================================================
@@ -604,15 +603,24 @@ footer {
 }
 
 .view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--fg-muted);
-  transition: color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
+  transition: color 0.2s ease;
 }
 
 .view-all:hover {
-  color: var(--fg);
-  transform: translateX(2px);
+  color: var(--accent);
+}
+
+.view-all-arrow {
+  transition: transform 0.2s ease;
+}
+
+.view-all:hover .view-all-arrow {
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
@@ -662,7 +670,7 @@ footer {
 }
 
 .timeline-org a:hover {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .timeline-desc {
