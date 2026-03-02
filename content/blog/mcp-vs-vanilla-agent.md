@@ -11,7 +11,7 @@ draft: false
 
 In the [previous post](/blog/semantic-scholar-mcp/) I introduced the Semantic Scholar MCP server. It gives coding agents structured access to academic paper search, citation graphs, author profiles, and BibTeX export. The post showed what the tools can do, but it didn't answer the obvious question: does a domain-specific MCP actually help, or is a general-purpose agent good enough?
 
-To find out, I ran a controlled experiment. Same prompt, same model (Claude Code, Opus 4.6, 200k context), two runs. The first run without and the second with the Semantic Scholar MCP server:
+To find out, I ran a controlled experiment. Same prompt, same model (Claude Code, Opus 4.6, 200k context), two independent runs. The first run without and the second with the Semantic Scholar MCP server:
 
 > Find the first journal paper by Ante Kapetanovic and extract all references from that paper.
 
@@ -68,11 +68,11 @@ The agent had access to the same baseline tools plus the Semantic Scholar MCP se
 
 ### Finding the author (single turn)
 
-Two parallel `search_authors` calls returned structured records with paper counts, h-indices, and DBLP aliases. The agent immediately spotted that there were two duplicate profiles for the same person.
+Two parallel `search_authors` calls (I have a publishing track record with two different lastnames) returned structured records with paper counts, h-indices, and DBLP aliases. The agent immediately spotted that there were two duplicate profiles for the same person.
 
 ### Finding the paper (single turn)
 
-Two parallel `get_author_details` calls returned complete publication lists with venue types, dates, and journal metadata. The agent picked the earliest entry marked as a journal article.
+Two parallel `get_author_details` calls returned complete publication lists with venue types, dates, and journal metadata. The agent picked the earliest entry marked as a journal article of the two runs.
 
 ### Hitting the same wall (two turns)
 
@@ -94,7 +94,7 @@ No packages installed, no temporary files created, and no environment modified.
 
 ### Structured discovery replaced guesswork
 
-Without MCP, finding an author means searching the web, following links, and parsing unstructured HTML across multiple sites. The agent spent five turns of chasing fragments of information scattered across Google Scholar, ResearchGate, and university pages.
+Without MCP, finding an author means searching the web, following links, and parsing unstructured HTML across multiple sites. The agent spent five turns of chasing fragments of information scattered across Google Scholar, ResearchGate, and deprecated university pages.
 
 With MCP, `search_authors` returns structured records in one call. The agent gets paper counts, citation metrics, and cross-database identifiers immediately. It can spot duplicate profiles and choose the right one without guessing. What took five turns of trial and error became one turn with a purpose-built tool.
 
@@ -121,7 +121,7 @@ The MCP agent left zero trace. Every interaction was a stateless API call that r
 
 ## Limitations
 
-This is an N=1 experiment with one task, one model, and one paper. The results are directionally interesting but not statistically conclusive. A proper benchmark would need dozens of tasks across different domains and publishers.
+This is an `N=1` experiment with one task, one model, and one paper. The results are directionally interesting but not statistically conclusive. A proper benchmark would need dozens of tasks across different domains and publishers.
 
 Both approaches hit the same fundamental constraint. Springer blocks reference data from the Semantic Scholar API. The MCP cannot override publisher restrictions. In both cases, Crossref served as the successful fallback.
 
