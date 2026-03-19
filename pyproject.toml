@@ -6,4 +6,20 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bibtexparser>=1.4.3",
+    "matplotlib>=3.10.8",
+    "mlx-lm>=0.31.1",
+]
+
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "E501",  # Line too long (106 > 88)
+    "PLR2004",  # Magic value used in comparison
+    "FBT001",  # Boolean-typed positional argument in function definition
+    "C901",  # Function is too complex
+    "PLR0912",  # Too many branches in function
+    "PLR0915",  # Too many statements in function
+    "T201",  # Print
+    "INP001", # Implicit namespace package
 ]
