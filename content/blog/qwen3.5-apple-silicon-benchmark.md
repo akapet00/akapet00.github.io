@@ -4,6 +4,7 @@ date: 2026-03-18
 categories: ["Agentic AI"]
 tags: ["LLM", "Apple Silicon", "MLX", "llama.cpp", "ollama", "benchmark", "opencode", "Local Inference"]
 description: "Benchmark of Qwen3.5-35B-A3B across ollama, llama.cpp, and MLX on M4 Max. MLX reaches 130 tok/s native, 100+ via HTTP. Includes opencode config for daily use."
+image: "/images/blog/qwen3.5-apple-silicon-benchmark/qwen3.5-apple-silicon-benchmark-results.png"
 math: false
 draft: false
 ---
