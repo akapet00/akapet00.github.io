@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "httpx",
+#     "mlx-lm>=0.31.1",
+# ]
+# ///
 """Benchmark Qwen3.5-35B-A3B across local inference engines.
 
 Measures generation tokens/second for ollama, llama.cpp, and MLX
@@ -10,12 +17,12 @@ Prerequisites:
 - MLX Python: Install MLX and ensure the Qwen3.5-35B-A3B-4bit model is available for direct loading
 
 Usage:
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --engine ollama --repetitions 10
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --engine llamacpp --thinking-modes thinking --repetitions 10
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --engine llamacpp --thinking-modes non-thinking --repetitions 10
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --engine mlx-http --repetitions 10
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --engine mlx-python --repetitions 10
-    uv run python scripts/benchmark-qwen3.5-on-mac/benchmark.py --summarize
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --engine ollama --repetitions 10
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --engine llamacpp --thinking-modes thinking --repetitions 10
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --engine llamacpp --thinking-modes non-thinking --repetitions 10
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --engine mlx-http --repetitions 10
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --engine mlx-python --repetitions 10
+    uv run scripts/qwen3.5-apple-silicon-benchmark/benchmark.py --summarize
 """
 
 import argparse

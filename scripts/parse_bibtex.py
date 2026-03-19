@@ -1,6 +1,6 @@
 """Parse BibTeX file and convert to JSON for Hugo.
 
-Usage: uv run python scripts/parse_bibtex.py
+Usage: uv run scripts/parse_bibtex.py
 """
 
 import json

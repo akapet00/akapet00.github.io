@@ -6,8 +6,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bibtexparser>=1.4.3",
-    "matplotlib>=3.10.8",
-    "mlx-lm>=0.31.1",
 ]
 
 

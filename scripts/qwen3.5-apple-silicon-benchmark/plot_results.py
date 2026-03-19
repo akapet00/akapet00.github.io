@@ -1,7 +1,13 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "matplotlib>=3.10.8",
+# ]
+# ///
 """Generate a horizontal bar chart from benchmark results.
 
 Usage:
-    uv run python scripts/qwen3.5-apple-silicon-benchmark/plot_results.py
+    uv run scripts/qwen3.5-apple-silicon-benchmark/plot_results.py
 """
 
 import json
