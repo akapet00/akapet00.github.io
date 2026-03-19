@@ -1,0 +1,695 @@
+{
+  "engine": "mlx-http",
+  "model_name": "/Users/ankapetanovic/.local/share/mlx-models/Qwen3.5-35B-A3B-4bit",
+  "quantization_note": "MLX 4-bit group quantization",
+  "timestamp": "2026-03-18T20:10:31.364850+00:00",
+  "system_info": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python_version": "3.13.11",
+    "chip": "Apple M4 Max",
+    "memory_gb": 128
+  },
+  "results": [
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 88.58335473135185,
+      "total_seconds": 4.109124124999653,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 89.82670602259735,
+      "total_seconds": 4.052247000000534,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 87.83078089741272,
+      "total_seconds": 4.144332957999723,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 88.3033250013305,
+      "total_seconds": 4.122155082999598,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 87.89742771230996,
+      "total_seconds": 4.14119058399956,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 88.42044138501075,
+      "total_seconds": 4.116695124999751,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 90.57144986354153,
+      "total_seconds": 4.018926499999907,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 89.88687556196139,
+      "total_seconds": 4.049534458999915,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 89.2998124979887,
+      "total_seconds": 4.07615637500021,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 364,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 90.00159264494837,
+      "total_seconds": 4.044372874999681,
+      "finish_reason": "stop",
+      "output_length_chars": 1259,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 308,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 85.19420688287742,
+      "total_seconds": 3.6152692920004483,
+      "finish_reason": "stop",
+      "output_length_chars": 1012,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 244,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 78.97592395847128,
+      "total_seconds": 3.0895491660003245,
+      "finish_reason": "stop",
+      "output_length_chars": 939,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 479,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 96.11597002511617,
+      "total_seconds": 4.9835630839997975,
+      "finish_reason": "stop",
+      "output_length_chars": 1674,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 261,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 78.47519294112162,
+      "total_seconds": 3.3258917909997763,
+      "finish_reason": "stop",
+      "output_length_chars": 891,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 550,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 96.76676862571112,
+      "total_seconds": 5.683769416000359,
+      "finish_reason": "stop",
+      "output_length_chars": 2046,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 235,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 81.4136069765699,
+      "total_seconds": 2.886495375000777,
+      "finish_reason": "stop",
+      "output_length_chars": 879,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 442,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 88.8710908466541,
+      "total_seconds": 4.973495833000015,
+      "finish_reason": "stop",
+      "output_length_chars": 1644,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 232,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 76.24412563864,
+      "total_seconds": 3.0428573750004944,
+      "finish_reason": "stop",
+      "output_length_chars": 839,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 561,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 70.90789629890715,
+      "total_seconds": 7.911671750000096,
+      "finish_reason": "stop",
+      "output_length_chars": 1996,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 479,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 92.42752450564586,
+      "total_seconds": 5.182438916999672,
+      "finish_reason": "stop",
+      "output_length_chars": 1802,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 107.35113243336305,
+      "total_seconds": 3.3348507079999763,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 107.25722724482746,
+      "total_seconds": 3.3377704160002395,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 108.19929794710464,
+      "total_seconds": 3.308709083999929,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 108.07486673985866,
+      "total_seconds": 3.3125185420003618,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 108.08248823380765,
+      "total_seconds": 3.312284957999509,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 108.24935283783725,
+      "total_seconds": 3.307179124999493,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 107.78079626795761,
+      "total_seconds": 3.3215564590000213,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 107.23740932092707,
+      "total_seconds": 3.338387249999869,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 106.66292452608506,
+      "total_seconds": 3.356367749999663,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 358,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 106.76566513563102,
+      "total_seconds": 3.3531379169999127,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 344,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 105.10847427524898,
+      "total_seconds": 3.272809375000179,
+      "finish_reason": "stop",
+      "output_length_chars": 1204,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 377,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 106.85555378734492,
+      "total_seconds": 3.528127333000157,
+      "finish_reason": "stop",
+      "output_length_chars": 1266,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 175,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 102.14551047172631,
+      "total_seconds": 1.7132422089998727,
+      "finish_reason": "stop",
+      "output_length_chars": 577,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 334,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 106.50477515673934,
+      "total_seconds": 3.1360096250000424,
+      "finish_reason": "stop",
+      "output_length_chars": 1190,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 343,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 103.40586277326238,
+      "total_seconds": 3.317026624999926,
+      "finish_reason": "stop",
+      "output_length_chars": 1225,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 366,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 103.62531097766515,
+      "total_seconds": 3.5319556250005917,
+      "finish_reason": "stop",
+      "output_length_chars": 1296,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 347,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 103.4755290624538,
+      "total_seconds": 3.353449874999569,
+      "finish_reason": "stop",
+      "output_length_chars": 1195,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 323,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 103.19254326849779,
+      "total_seconds": 3.130071124999631,
+      "finish_reason": "stop",
+      "output_length_chars": 1160,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 179,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 99.33776903590115,
+      "total_seconds": 1.8019329580001795,
+      "finish_reason": "stop",
+      "output_length_chars": 599,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-http",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 413,
+      "prompt_tokens": 0,
+      "generation_tps_native": null,
+      "prompt_tps_native": null,
+      "generation_tps_client": 104.18429874507224,
+      "total_seconds": 3.964128999999957,
+      "finish_reason": "stop",
+      "output_length_chars": 1539,
+      "error": null
+    }
+  ]
+}

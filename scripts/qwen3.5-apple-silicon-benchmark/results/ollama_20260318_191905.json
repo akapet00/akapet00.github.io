@@ -1,0 +1,695 @@
+{
+  "engine": "ollama",
+  "model_name": "qwen3.5:35b",
+  "quantization_note": "Standard Q4_K_M (~4.5 bits/weight average)",
+  "timestamp": "2026-03-18T19:19:05.040713+00:00",
+  "system_info": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python_version": "3.13.11",
+    "chip": "Apple M4 Max",
+    "memory_gb": 128
+  },
+  "results": [
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.59817544780076,
+      "prompt_tps_native": 291.9498867111172,
+      "generation_tps_client": 46.802278066344485,
+      "total_seconds": 11.580632874999992,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.66871620627752,
+      "prompt_tps_native": 283.8098316455846,
+      "generation_tps_client": 46.85946922135526,
+      "total_seconds": 11.56649891699999,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.528645462027214,
+      "prompt_tps_native": 292.02614436090505,
+      "generation_tps_client": 46.71134096857161,
+      "total_seconds": 11.603177917000266,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.137698552466134,
+      "prompt_tps_native": 285.4880848946656,
+      "generation_tps_client": 46.27761512846358,
+      "total_seconds": 11.711925916999917,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.30568872533281,
+      "prompt_tps_native": 276.41659666672297,
+      "generation_tps_client": 46.424394923163995,
+      "total_seconds": 11.674896374999662,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 47.631919528035255,
+      "prompt_tps_native": 283.3758359303784,
+      "generation_tps_client": 45.75835846701335,
+      "total_seconds": 11.844830499999716,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 48.055366696733,
+      "prompt_tps_native": 279.33025914864794,
+      "generation_tps_client": 46.22253526192688,
+      "total_seconds": 11.725882124999771,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 47.77076805685935,
+      "prompt_tps_native": 276.71532756945555,
+      "generation_tps_client": 45.9451772254402,
+      "total_seconds": 11.796667958000398,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 47.83220710545484,
+      "prompt_tps_native": 280.3088490239596,
+      "generation_tps_client": 46.01536950969001,
+      "total_seconds": 11.778673207999873,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 542,
+      "prompt_tokens": 45,
+      "generation_tps_native": 47.48558708195942,
+      "prompt_tps_native": 277.09373767721814,
+      "generation_tps_client": 45.679016474186334,
+      "total_seconds": 11.865404333000242,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 468,
+      "prompt_tokens": 45,
+      "generation_tps_native": 45.925580339641066,
+      "prompt_tps_native": 278.9554467424057,
+      "generation_tps_client": 44.48132018121949,
+      "total_seconds": 10.521270459000334,
+      "finish_reason": "stop",
+      "output_length_chars": 1222,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 311,
+      "prompt_tokens": 45,
+      "generation_tps_native": 44.60605207869429,
+      "prompt_tps_native": 264.3051491048131,
+      "generation_tps_client": 42.67138390116738,
+      "total_seconds": 7.288256709000052,
+      "finish_reason": "stop",
+      "output_length_chars": 733,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 608,
+      "prompt_tokens": 45,
+      "generation_tps_native": 42.87734131480712,
+      "prompt_tps_native": 246.06764625977914,
+      "generation_tps_client": 41.767483341762485,
+      "total_seconds": 14.556778415999815,
+      "finish_reason": "stop",
+      "output_length_chars": 1616,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 320,
+      "prompt_tokens": 45,
+      "generation_tps_native": 41.50340355003051,
+      "prompt_tps_native": 232.39395290690442,
+      "generation_tps_client": 39.77829237095325,
+      "total_seconds": 8.044588667000426,
+      "finish_reason": "stop",
+      "output_length_chars": 742,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 351,
+      "prompt_tokens": 45,
+      "generation_tps_native": 40.57423429290788,
+      "prompt_tps_native": 230.4186305075864,
+      "generation_tps_client": 39.0344838958091,
+      "total_seconds": 8.992049208000026,
+      "finish_reason": "stop",
+      "output_length_chars": 836,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 331,
+      "prompt_tokens": 45,
+      "generation_tps_native": 39.9679085466633,
+      "prompt_tps_native": 222.5749072759119,
+      "generation_tps_client": 38.366631465607426,
+      "total_seconds": 8.62728854099987,
+      "finish_reason": "stop",
+      "output_length_chars": 784,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 364,
+      "prompt_tokens": 45,
+      "generation_tps_native": 39.939213806929686,
+      "prompt_tps_native": 222.04974494576786,
+      "generation_tps_client": 38.46149104710211,
+      "total_seconds": 9.46401166700025,
+      "finish_reason": "stop",
+      "output_length_chars": 888,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 344,
+      "prompt_tokens": 45,
+      "generation_tps_native": 40.135155523576564,
+      "prompt_tps_native": 226.086060915121,
+      "generation_tps_client": 38.59102214927085,
+      "total_seconds": 8.913990374999685,
+      "finish_reason": "stop",
+      "output_length_chars": 895,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 341,
+      "prompt_tokens": 45,
+      "generation_tps_native": 40.494254324048384,
+      "prompt_tps_native": 226.6561001943264,
+      "generation_tps_client": 38.90675850001248,
+      "total_seconds": 8.764544083000146,
+      "finish_reason": "stop",
+      "output_length_chars": 847,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 615,
+      "prompt_tokens": 45,
+      "generation_tps_native": 41.636935243228265,
+      "prompt_tps_native": 229.8750756672124,
+      "generation_tps_client": 40.55442793789175,
+      "total_seconds": 15.164805207999962,
+      "finish_reason": "stop",
+      "output_length_chars": 1695,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 42.74725760732066,
+      "prompt_tps_native": 247.91579302723645,
+      "generation_tps_client": 39.795930125047924,
+      "total_seconds": 4.92512674999989,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.08849984884247,
+      "prompt_tps_native": 246.58292465711202,
+      "generation_tps_client": 40.09901079985452,
+      "total_seconds": 4.8879011250000985,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.239122089843065,
+      "prompt_tps_native": 247.2937448494172,
+      "generation_tps_client": 40.22077339294209,
+      "total_seconds": 4.873103709000134,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.328770038646454,
+      "prompt_tps_native": 252.31997886181324,
+      "generation_tps_client": 40.332181476683516,
+      "total_seconds": 4.859642916000212,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.335933110499056,
+      "prompt_tps_native": 250.92796632226361,
+      "generation_tps_client": 40.329995737361955,
+      "total_seconds": 4.859906290999788,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.573007658655264,
+      "prompt_tps_native": 251.09313395868915,
+      "generation_tps_client": 40.52781412790091,
+      "total_seconds": 4.836184833000061,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.69664678442485,
+      "prompt_tps_native": 256.60274346550193,
+      "generation_tps_client": 40.66278682824213,
+      "total_seconds": 4.820132000000285,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.872731518166965,
+      "prompt_tps_native": 256.2074667327006,
+      "generation_tps_client": 40.831676315854075,
+      "total_seconds": 4.800194792000184,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.96112749502708,
+      "prompt_tps_native": 256.210201390758,
+      "generation_tps_client": 40.88206887318991,
+      "total_seconds": 4.7942779169998175,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 196,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.88633575266827,
+      "prompt_tps_native": 255.47094007729072,
+      "generation_tps_client": 40.845765405779105,
+      "total_seconds": 4.798539041999902,
+      "finish_reason": "stop",
+      "output_length_chars": 601,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 191,
+      "prompt_tokens": 47,
+      "generation_tps_native": 41.632725069869046,
+      "prompt_tps_native": 251.0911781518621,
+      "generation_tps_client": 39.043608749586426,
+      "total_seconds": 4.891965833000086,
+      "finish_reason": "stop",
+      "output_length_chars": 571,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 304,
+      "prompt_tokens": 47,
+      "generation_tps_native": 42.11467650555983,
+      "prompt_tps_native": 254.4093676776958,
+      "generation_tps_client": 40.28981297425735,
+      "total_seconds": 7.545331625000017,
+      "finish_reason": "stop",
+      "output_length_chars": 963,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 195,
+      "prompt_tokens": 47,
+      "generation_tps_native": 42.92345376316421,
+      "prompt_tps_native": 255.4054026589528,
+      "generation_tps_client": 40.23017885397205,
+      "total_seconds": 4.847107459000199,
+      "finish_reason": "stop",
+      "output_length_chars": 589,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 310,
+      "prompt_tokens": 47,
+      "generation_tps_native": 42.781834579272356,
+      "prompt_tps_native": 261.0770260549317,
+      "generation_tps_client": 40.94960640343289,
+      "total_seconds": 7.570280333000028,
+      "finish_reason": "stop",
+      "output_length_chars": 992,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 183,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.10379595098275,
+      "prompt_tps_native": 258.6470183276287,
+      "generation_tps_client": 40.24632178446418,
+      "total_seconds": 4.546999374999814,
+      "finish_reason": "stop",
+      "output_length_chars": 556,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 198,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.32371882862368,
+      "prompt_tps_native": 259.87975032191224,
+      "generation_tps_client": 40.627803872484186,
+      "total_seconds": 4.8735097919998225,
+      "finish_reason": "stop",
+      "output_length_chars": 604,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 375,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.576293666738586,
+      "prompt_tps_native": 262.20764893185253,
+      "generation_tps_client": 41.94473892655613,
+      "total_seconds": 8.940334583000094,
+      "finish_reason": "stop",
+      "output_length_chars": 1171,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 335,
+      "prompt_tokens": 47,
+      "generation_tps_native": 44.101134771182835,
+      "prompt_tps_native": 267.9217810226944,
+      "generation_tps_client": 42.304484379527864,
+      "total_seconds": 7.918782249999822,
+      "finish_reason": "stop",
+      "output_length_chars": 1122,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 361,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.929464227177554,
+      "prompt_tps_native": 268.24863502538176,
+      "generation_tps_client": 42.251125737999,
+      "total_seconds": 8.544151042000067,
+      "finish_reason": "stop",
+      "output_length_chars": 1151,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "ollama",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 336,
+      "prompt_tokens": 47,
+      "generation_tps_native": 43.99286888217184,
+      "prompt_tps_native": 268.75898394808377,
+      "generation_tps_client": 42.192286292250294,
+      "total_seconds": 7.963540958000067,
+      "finish_reason": "stop",
+      "output_length_chars": 1107,
+      "error": null
+    }
+  ]
+}

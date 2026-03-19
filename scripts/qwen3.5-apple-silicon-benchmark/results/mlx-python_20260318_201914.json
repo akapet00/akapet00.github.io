@@ -1,0 +1,695 @@
+{
+  "engine": "mlx-python",
+  "model_name": "/Users/ankapetanovic/.local/share/mlx-models/Qwen3.5-35B-A3B-4bit",
+  "quantization_note": "MLX 4-bit group quantization",
+  "timestamp": "2026-03-18T20:19:14.480785+00:00",
+  "system_info": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python_version": "3.13.11",
+    "chip": "Apple M4 Max",
+    "memory_gb": 128
+  },
+  "results": [
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 135.43483884061843,
+      "prompt_tps_native": 529.8353712004729,
+      "generation_tps_client": 127.10324172404015,
+      "total_seconds": 2.8559460409996973,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 134.87498081887796,
+      "prompt_tps_native": 512.4963698157113,
+      "generation_tps_client": 126.34413764693915,
+      "total_seconds": 2.873105208999732,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 134.41686822654313,
+      "prompt_tps_native": 497.4899806362827,
+      "generation_tps_client": 125.8701103826502,
+      "total_seconds": 2.883925332999752,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 132.26775601548064,
+      "prompt_tps_native": 488.49238938460957,
+      "generation_tps_client": 123.88438286634116,
+      "total_seconds": 2.930151417000161,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 132.46278078573485,
+      "prompt_tps_native": 508.5856778227643,
+      "generation_tps_client": 124.21919212183482,
+      "total_seconds": 2.9222537499999817,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 131.86965686629142,
+      "prompt_tps_native": 570.9005663354934,
+      "generation_tps_client": 124.06573672620753,
+      "total_seconds": 2.9258682499994393,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 131.30442474132101,
+      "prompt_tps_native": 510.5728750198415,
+      "generation_tps_client": 123.12317188691388,
+      "total_seconds": 2.9482671250007115,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 129.8885397850168,
+      "prompt_tps_native": 502.71021129085756,
+      "generation_tps_client": 121.83045563581688,
+      "total_seconds": 2.979550541000208,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 127.45524714468878,
+      "prompt_tps_native": 510.3704438781194,
+      "generation_tps_client": 119.79035203388983,
+      "total_seconds": 3.0302941250001822,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 363,
+      "prompt_tokens": 45,
+      "generation_tps_native": 127.63816676223911,
+      "prompt_tps_native": 529.7652053536415,
+      "generation_tps_client": 119.87857916802983,
+      "total_seconds": 3.028063917000509,
+      "finish_reason": "stop",
+      "output_length_chars": 1298,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 383,
+      "prompt_tokens": 45,
+      "generation_tps_native": 129.86527314406982,
+      "prompt_tps_native": 503.9880405675572,
+      "generation_tps_client": 122.27625714317708,
+      "total_seconds": 3.132251582999743,
+      "finish_reason": "stop",
+      "output_length_chars": 1256,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 367,
+      "prompt_tokens": 45,
+      "generation_tps_native": 130.213542226144,
+      "prompt_tps_native": 507.0570110204878,
+      "generation_tps_client": 122.25691086438805,
+      "total_seconds": 3.0018752919995677,
+      "finish_reason": "stop",
+      "output_length_chars": 1281,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 345,
+      "prompt_tokens": 45,
+      "generation_tps_native": 130.48027390254728,
+      "prompt_tps_native": 505.79533551590555,
+      "generation_tps_client": 122.07776712074198,
+      "total_seconds": 2.826067416999649,
+      "finish_reason": "stop",
+      "output_length_chars": 1182,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 421,
+      "prompt_tokens": 45,
+      "generation_tps_native": 130.44776947023186,
+      "prompt_tps_native": 504.2932614562801,
+      "generation_tps_client": 123.47326177014823,
+      "total_seconds": 3.4096450839997487,
+      "finish_reason": "stop",
+      "output_length_chars": 1487,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 551,
+      "prompt_tokens": 45,
+      "generation_tps_native": 126.90163405650382,
+      "prompt_tps_native": 484.7383731793198,
+      "generation_tps_client": 121.67759954839386,
+      "total_seconds": 4.528360208000777,
+      "finish_reason": "stop",
+      "output_length_chars": 1886,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 304,
+      "prompt_tokens": 45,
+      "generation_tps_native": 127.87195526951791,
+      "prompt_tps_native": 566.6067159014182,
+      "generation_tps_client": 118.97209673837882,
+      "total_seconds": 2.555221000000529,
+      "finish_reason": "stop",
+      "output_length_chars": 985,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 378,
+      "prompt_tokens": 45,
+      "generation_tps_native": 127.4619156036601,
+      "prompt_tps_native": 495.0538128452076,
+      "generation_tps_client": 119.93655736866803,
+      "total_seconds": 3.1516662499998347,
+      "finish_reason": "stop",
+      "output_length_chars": 1294,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 523,
+      "prompt_tokens": 45,
+      "generation_tps_native": 126.35220489881574,
+      "prompt_tps_native": 504.95298281751536,
+      "generation_tps_client": 120.9442555092039,
+      "total_seconds": 4.3243062499996086,
+      "finish_reason": "stop",
+      "output_length_chars": 1843,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 699,
+      "prompt_tokens": 45,
+      "generation_tps_native": 125.46598299424706,
+      "prompt_tps_native": 426.08155405499457,
+      "generation_tps_client": 120.87523265833835,
+      "total_seconds": 5.782822375000251,
+      "finish_reason": "stop",
+      "output_length_chars": 2340,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 521,
+      "prompt_tokens": 45,
+      "generation_tps_native": 125.97046193156307,
+      "prompt_tps_native": 508.83679908058565,
+      "generation_tps_client": 120.30773147476404,
+      "total_seconds": 4.330561249999846,
+      "finish_reason": "stop",
+      "output_length_chars": 1814,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 128.7860925497596,
+      "prompt_tps_native": 515.3233311285952,
+      "generation_tps_client": 114.20555174375255,
+      "total_seconds": 1.6986915000006775,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.10511322206585,
+      "prompt_tps_native": 507.6850390721289,
+      "generation_tps_client": 114.64242274894173,
+      "total_seconds": 1.6922182500002236,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.5909971575409,
+      "prompt_tps_native": 492.0617973500454,
+      "generation_tps_client": 115.15668776617527,
+      "total_seconds": 1.684661166999831,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 131.17699317822672,
+      "prompt_tps_native": 508.93960537996304,
+      "generation_tps_client": 115.659093629203,
+      "total_seconds": 1.677343249999467,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 128.8989689004723,
+      "prompt_tps_native": 487.961456190925,
+      "generation_tps_client": 113.5402891450816,
+      "total_seconds": 1.708644583000023,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.45690060837515,
+      "prompt_tps_native": 513.4940107802499,
+      "generation_tps_client": 114.7200934888323,
+      "total_seconds": 1.6910725410007217,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.55851989946413,
+      "prompt_tps_native": 511.7807128962974,
+      "generation_tps_client": 115.03168653944897,
+      "total_seconds": 1.686491833999753,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 131.34875226591592,
+      "prompt_tps_native": 522.1122363831781,
+      "generation_tps_client": 115.87219632895876,
+      "total_seconds": 1.6742584169996917,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.48140660971356,
+      "prompt_tps_native": 493.34336520512096,
+      "generation_tps_client": 115.22326792729683,
+      "total_seconds": 1.683687708999969,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 194,
+      "prompt_tokens": 47,
+      "generation_tps_native": 130.0098830966931,
+      "prompt_tps_native": 501.93052089779894,
+      "generation_tps_client": 114.91080197083375,
+      "total_seconds": 1.688265999999203,
+      "finish_reason": "stop",
+      "output_length_chars": 582,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 192,
+      "prompt_tokens": 47,
+      "generation_tps_native": 128.9302965547654,
+      "prompt_tps_native": 521.5432482456167,
+      "generation_tps_client": 114.00507579450813,
+      "total_seconds": 1.6841355410006145,
+      "finish_reason": "stop",
+      "output_length_chars": 566,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 195,
+      "prompt_tokens": 47,
+      "generation_tps_native": 129.35468903889037,
+      "prompt_tps_native": 493.9683729086994,
+      "generation_tps_client": 114.08360107014757,
+      "total_seconds": 1.7092728329998863,
+      "finish_reason": "stop",
+      "output_length_chars": 587,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 324,
+      "prompt_tokens": 47,
+      "generation_tps_native": 125.37294057899106,
+      "prompt_tps_native": 510.1521637332859,
+      "generation_tps_client": 116.28145019025439,
+      "total_seconds": 2.786342959000649,
+      "finish_reason": "stop",
+      "output_length_chars": 1053,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 351,
+      "prompt_tokens": 47,
+      "generation_tps_native": 125.84680116457018,
+      "prompt_tps_native": 515.689909381397,
+      "generation_tps_client": 117.49896098281533,
+      "total_seconds": 2.9872604579995823,
+      "finish_reason": "stop",
+      "output_length_chars": 1133,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 132,
+      "prompt_tokens": 47,
+      "generation_tps_native": 125.99924404453934,
+      "prompt_tps_native": 498.5260758359806,
+      "generation_tps_client": 105.60005280004428,
+      "total_seconds": 1.2499993749997884,
+      "finish_reason": "stop",
+      "output_length_chars": 376,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 203,
+      "prompt_tokens": 47,
+      "generation_tps_native": 127.5851742455616,
+      "prompt_tps_native": 491.2939061258666,
+      "generation_tps_client": 113.2678895088427,
+      "total_seconds": 1.792211375000079,
+      "finish_reason": "stop",
+      "output_length_chars": 623,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 195,
+      "prompt_tokens": 47,
+      "generation_tps_native": 125.05572394881044,
+      "prompt_tps_native": 508.38290968036443,
+      "generation_tps_client": 111.0625541827087,
+      "total_seconds": 1.7557672920002005,
+      "finish_reason": "stop",
+      "output_length_chars": 586,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 198,
+      "prompt_tokens": 47,
+      "generation_tps_native": 126.06315384672935,
+      "prompt_tps_native": 497.7910522043025,
+      "generation_tps_client": 111.64057115587836,
+      "total_seconds": 1.7735487909994845,
+      "finish_reason": "stop",
+      "output_length_chars": 597,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 212,
+      "prompt_tokens": 47,
+      "generation_tps_native": 125.39857730772322,
+      "prompt_tps_native": 506.766775889667,
+      "generation_tps_client": 112.4059892243962,
+      "total_seconds": 1.886020500000086,
+      "finish_reason": "stop",
+      "output_length_chars": 648,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "mlx-python",
+        "thinking": false,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 394,
+      "prompt_tokens": 47,
+      "generation_tps_native": 124.10464131670044,
+      "prompt_tps_native": 500.2669882297352,
+      "generation_tps_client": 116.55649369207272,
+      "total_seconds": 3.380335042000297,
+      "finish_reason": "stop",
+      "output_length_chars": 1233,
+      "error": null
+    }
+  ]
+}

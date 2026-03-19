@@ -1,0 +1,355 @@
+{
+  "engine": "llamacpp",
+  "model_name": "unsloth/Qwen3.5-35B-A3B-GGUF:UD-Q4_K_XL",
+  "quantization_note": "Unsloth Dynamic Q4_K_XL (important layers upcast to 8/16-bit)",
+  "timestamp": "2026-03-18T20:03:20.991135+00:00",
+  "system_info": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python_version": "3.13.11",
+    "chip": "Apple M4 Max",
+    "memory_gb": 128
+  },
+  "results": [
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 0,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 74.31801417338967,
+      "prompt_tps_native": 353.7541173048653,
+      "generation_tps_client": 72.21330574192336,
+      "total_seconds": 5.01292658300008,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 1,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 73.10492151621222,
+      "prompt_tps_native": 352.38289141908507,
+      "generation_tps_client": 71.11717884103852,
+      "total_seconds": 5.090190666999661,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 2,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 73.45767295832313,
+      "prompt_tps_native": 340.0306783234221,
+      "generation_tps_client": 71.38664456476627,
+      "total_seconds": 5.070976541999698,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 3,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 72.62276306342075,
+      "prompt_tps_native": 339.74058918567954,
+      "generation_tps_client": 70.59529138182202,
+      "total_seconds": 5.127820749999955,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 4,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 72.56370371558235,
+      "prompt_tps_native": 334.93855738241797,
+      "generation_tps_client": 70.51542301167471,
+      "total_seconds": 5.133628708999822,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 5,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 72.26880321464414,
+      "prompt_tps_native": 324.1677892477146,
+      "generation_tps_client": 70.17498741424377,
+      "total_seconds": 5.15853316599987,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 6,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 71.64765661692829,
+      "prompt_tps_native": 326.3873274680322,
+      "generation_tps_client": 69.6011130410077,
+      "total_seconds": 5.2010662499997125,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 7,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 71.88951257123168,
+      "prompt_tps_native": 320.71612346858046,
+      "generation_tps_client": 69.79553203770587,
+      "total_seconds": 5.186578415999975,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 8,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 71.11717418855206,
+      "prompt_tps_native": 323.0693019549283,
+      "generation_tps_client": 69.08304495257278,
+      "total_seconds": 5.240070124999875,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "deterministic"
+      },
+      "run_index": 9,
+      "generation_tokens": 362,
+      "prompt_tokens": 45,
+      "generation_tps_native": 71.34634293821978,
+      "prompt_tps_native": 316.5246994773825,
+      "generation_tps_client": 69.25938417508716,
+      "total_seconds": 5.226728540999829,
+      "finish_reason": "stop",
+      "output_length_chars": 865,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 0,
+      "generation_tokens": 339,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.88750529303827,
+      "prompt_tps_native": 315.5591708507475,
+      "generation_tps_client": 68.62751863540734,
+      "total_seconds": 4.9397094159994595,
+      "finish_reason": "stop",
+      "output_length_chars": 830,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 1,
+      "generation_tokens": 554,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.85067618913396,
+      "prompt_tps_native": 317.48271482997035,
+      "generation_tps_client": 69.45874124678652,
+      "total_seconds": 7.975957958000436,
+      "finish_reason": "stop",
+      "output_length_chars": 1602,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 2,
+      "generation_tokens": 596,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.64155809675523,
+      "prompt_tps_native": 311.7833313702531,
+      "generation_tps_client": 69.33028409065587,
+      "total_seconds": 8.596531916999993,
+      "finish_reason": "stop",
+      "output_length_chars": 1641,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 3,
+      "generation_tokens": 598,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.4997215968352,
+      "prompt_tps_native": 314.81079870997524,
+      "generation_tps_client": 69.20050012909431,
+      "total_seconds": 8.641556042000047,
+      "finish_reason": "stop",
+      "output_length_chars": 1614,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 4,
+      "generation_tokens": 531,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.43571586895456,
+      "prompt_tps_native": 316.2155325069568,
+      "generation_tps_client": 68.99761291999127,
+      "total_seconds": 7.69591841700003,
+      "finish_reason": "stop",
+      "output_length_chars": 1501,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 5,
+      "generation_tokens": 327,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.72366749148775,
+      "prompt_tps_native": 315.6986410927382,
+      "generation_tps_client": 68.39734374535566,
+      "total_seconds": 4.780887416000041,
+      "finish_reason": "stop",
+      "output_length_chars": 761,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 6,
+      "generation_tokens": 329,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.73262444480801,
+      "prompt_tps_native": 315.0929524209642,
+      "generation_tps_client": 68.39285579545812,
+      "total_seconds": 4.810443958999713,
+      "finish_reason": "stop",
+      "output_length_chars": 813,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 7,
+      "generation_tokens": 548,
+      "prompt_tokens": 45,
+      "generation_tps_native": 70.5138400138763,
+      "prompt_tps_native": 316.7363486633726,
+      "generation_tps_client": 69.12253519549975,
+      "total_seconds": 7.927949957999772,
+      "finish_reason": "stop",
+      "output_length_chars": 1502,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 8,
+      "generation_tokens": 567,
+      "prompt_tokens": 45,
+      "generation_tps_native": 69.73908112918272,
+      "prompt_tps_native": 313.8797631254054,
+      "generation_tps_client": 68.41023550772988,
+      "total_seconds": 8.288233416999901,
+      "finish_reason": "stop",
+      "output_length_chars": 1617,
+      "error": null
+    },
+    {
+      "config": {
+        "engine": "llamacpp",
+        "thinking": true,
+        "param_set": "coding"
+      },
+      "run_index": 9,
+      "generation_tokens": 473,
+      "prompt_tokens": 45,
+      "generation_tps_native": 69.07642627486166,
+      "prompt_tps_native": 335.7357088499933,
+      "generation_tps_client": 67.61246813222401,
+      "total_seconds": 6.995751124999515,
+      "finish_reason": "stop",
+      "output_length_chars": 1243,
+      "error": null
+    }
+  ]
+}
