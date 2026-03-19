@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-"""
-Parse BibTeX file and convert to JSON for Hugo.
+"""Parse BibTeX file and convert to JSON for Hugo.
+
 Usage: uv run python scripts/parse_bibtex.py
 """
 
@@ -52,18 +51,18 @@ def parse_authors(author_str: str) -> list[str]:
     authors = author_str.split(" and ")
     result = []
     for author in authors:
-        author = clean_latex(author.strip())
+        _author = clean_latex(author.strip())
         # Handle "Last, First" format
-        if "," in author:
-            parts = author.split(",", 1)
-            author = f"{parts[1].strip()} {parts[0].strip()}"
-        result.append(author)
+        if "," in _author:
+            parts = _author.split(",", 1)
+            _author = f"{parts[1].strip()} {parts[0].strip()}"
+        result.append(_author)
     return result
 
 
 def parse_bibtex(bib_path: str, output_path: str) -> None:
     """Parse BibTeX file and write JSON output."""
-    with open(bib_path) as f:
+    with Path(bib_path).open() as f:
         bib_db = bibtexparser.load(f)
 
     publications = []
@@ -131,7 +130,7 @@ def parse_bibtex(bib_path: str, output_path: str) -> None:
     # Write JSON
     output_file = Path(output_path)
     output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w", encoding="utf-8") as f:
+    with output_file.open("w", encoding="utf-8") as f:
         json.dump(publications, f, indent=2, ensure_ascii=False)
 
     print(f"Parsed {len(publications)} publications to {output_path}")
@@ -149,7 +148,7 @@ if __name__ == "__main__":
     if not Path(bib_file).exists():
         print(f"Warning: {bib_file} not found. Creating empty publications.json")
         Path(json_file).parent.mkdir(parents=True, exist_ok=True)
-        with open(json_file, "w") as f:
+        with Path(json_file).open("w") as f:
             json.dump([], f)
     else:
         parse_bibtex(bib_file, json_file)
