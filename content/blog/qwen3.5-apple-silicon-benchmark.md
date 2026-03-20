@@ -14,7 +14,7 @@ You can easily fit very capable model to a machine with 32GB of RAM. On Apple Si
 
 ![CTO of HuggingFace on LinkedIn praises local LLMs for coding](/images/blog/qwen3.5-apple-silicon-benchmark/qwen3.5-apple-silicon-benchmark-huggingface.png)
 
-In this blog, we benchmark three inference engines to see which one is the best (read: fastest) for daily agentic coding work. My hardware for the tests: M4 Max with 128GB unified memory, but keep in mind that 128GB is overkill for this model. At 4-bit quantization, it uses around 20GB of RAM. So something like ~$1400.00 MacBook Air with 24GB of RAM will do the trick. You'll probably say "but actually, for the money you can get much more capable hardware, why mac specifically?" As you'll see in the results, the fastest engine by far in this benchmark is macOS-only.
+In this blog, we benchmark three inference engines to see which one is the best (read: fastest) for daily agentic coding work. My hardware for the tests: M4 Max with 128GB unified memory, but keep in mind that 128GB is overkill for this model. At 4-bit quantization, which is near-lossless for this MoE architecture[^6], it uses around 20GB of RAM. So something like ~$1400.00 MacBook Air with 24GB of RAM will do the trick. Yes, you can get more powerful hardware for the money. But the fastest engine in this benchmark only runs on macOS.
 
 
 ## Why Qwen3.5?
@@ -193,3 +193,4 @@ The [benchmark script](https://github.com/akapet00/akapet00.github.io/blob/main/
 [^3]: Artificial Analysis Intelligence Index v4.0 incorporates the following evaluations: GDPval-AA, 𝜏²-Bench Telecom, Terminal-Bench Hard, SciCode, AA-LCR, AA-Omniscience, IFBench, Humanity's Last Exam, GPQA Diamond, and CritPt. For further details, check out [Intelligence Index Methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking).
 [^4]: Agentic Index represents the average of agentic capabilities benchmarks in the Artificial Analysis Intelligence Index (GDPval-AA, 𝜏²-Bench Telecom).
 [^5]: On Artificial Analysis Intelligence Index, 32B-parameter MoE model scores 37 vs. 45 by flagship model. Similarly, on Coding and Agentic index, differences are: 30 vs. 41 and 44 vs 56, respectively.
+[^6]: Unsloth benchmarked 150+ quantization configs for Qwen3.5-35B using KL Divergence, showing that Dynamic 4-bit quantizations (Q4_K_XL, Q4_K_M) retain near-original accuracy. Key quality-sensitive layers (attention, SSM) stay at higher precision while MoE feed-forward layers tolerate aggressive quantization well. See [Unsloth GGUF Benchmarks](https://unsloth.ai/docs/models/qwen3.5/gguf-benchmarks).
