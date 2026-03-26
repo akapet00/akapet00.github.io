@@ -1,0 +1,90 @@
+References — Context Engineering: From Zero to Hero (DevDays 2026)
+==================================================================
+
+1.  Rajasekaran et al., "Effective Context Engineering for AI Agents", Anthropic, 2025
+    https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+
+2.  Walton, "Context Engineering: LLM Evolution for Agentic AI", Elastic Engineering Blog, 2025
+    https://www.elastic.co/search-labs/blog/context-engineering-llm-evolution-agentic-ai
+
+3.  Huber, "RAG is Dead, Context Engineering is King", Latent Space / Chroma, 2025
+    https://www.latent.space/p/chroma
+
+4.  Hong et al., "Context Rot: How Increasing Input Tokens Impacts LLM Performance", Chroma Research, 2025
+    https://research.trychroma.com/context-rot
+
+5.  Horthy, "What's Missing to Make AI Agents Mainstream", Heavybit, 2026
+    https://www.heavybit.com/library/article/whats-missing-to-make-ai-agents-mainstream
+
+6.  Boeckeler, "Understanding Spec-Driven Development", martinfowler.com, 2026
+    https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html
+
+7.  Horthy, "Advanced Context Engineering for Coding Agents", HumanLayer, 2025
+    https://www.humanlayer.dev/blog/advanced-context-engineering
+    https://github.com/humanlayer/advanced-context-engineering-for-coding-agents
+
+8.  Huntley, "Ralph Wiggum as a Software Engineer", ghuntley.com, 2025
+    https://ghuntley.com/ralph/
+
+9.  TACHES, "Get Shit Done (GSD)", github.com, 2025
+    https://github.com/gsd-build/get-shit-done
+
+10. Yegge, "Welcome to Gas Town", Medium, 2026
+    https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04
+
+11. Steinberger, "OpenClaw", openclaw.ai, 2025-26
+    https://steipete.me/posts/2026/openclaw
+    https://openclaw.ai/blog/introducing-openclaw
+
+12. Maragheh et al., "Multi-Agentic Recommender Systems", RecSys, 2025
+    https://dl.acm.org/doi/10.1145/3705328.3748008
+
+13. Nie et al., "A Hybrid Multi-Agent Conversational Recommender System with LLM", RecSys, 2024
+    https://dl.acm.org/doi/10.1145/3640457.3688061
+
+14. Pocock, "A Complete Guide to AGENTS.md", aihero.dev, 2026
+    https://www.aihero.dev/a-complete-guide-to-agents-md
+
+15. Mohsenimofidi et al., "Context Engineering for AI Agents in Open-Source Software", arXiv, 2025
+    https://arxiv.org/abs/2510.21413
+
+16. Karpathy, "Vibe Coding", X, 2025
+    https://x.com/karpathy/status/1886192184808149383
+
+17. Kapetanovic, "Context Engineering", antekapetanovic.com, 2026
+    https://antekapetanovic.com/blog/context-engineering/
+
+18. Kapetanovic, "Ralph Wiggum", antekapetanovic.com, 2026
+    https://antekapetanovic.com/blog/ralph-wiggum/
+
+19. Kapetanovic, "Agentic CRS Prototype", Infobip Confluence, 2026
+    https://confluence.infobip.com/spaces/AIR/pages/781539140/Prototype
+
+20. Schluntz & Zhang, "Building Effective Agents", Anthropic, 2024
+    https://www.anthropic.com/research/building-effective-agents
+
+21. Young, "Effective Harnesses for Long-Running Agents", Anthropic, 2025
+    https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+
+22. Rajasekaran, "Harness Design for Long-Running Application Development", Anthropic, 2026
+    https://www.anthropic.com/engineering/harness-design-long-running-apps
+
+23. Mishra-Sharma, "Long-Running Claude for Scientific Computing", Anthropic, 2026
+    https://www.anthropic.com/research/long-running-Claude
+
+24. Gloaguen et al., "Evaluating AGENTS.md", arXiv:2602.11988, 2025
+    https://arxiv.org/abs/2602.11988
+
+25. Zhang et al., "Recursive Language Models", MIT CSAIL, 2025
+    https://arxiv.org/abs/2512.24601
+    Blog: https://www.primeintellect.ai/blog/rlm
+
+26. Tandon et al., "End-to-End Test-Time Training for Long Context", Stanford/Berkeley/NVIDIA, 2025
+    https://arxiv.org/abs/2512.23675
+    https://github.com/test-time-training/e2e
+
+27. Artificial Analysis, "LLM Benchmarks", artificialanalysis.ai, 2025
+    https://artificialanalysis.ai/leaderboards/models
+
+28. Kapetanovic, "Qwen 3.5 Apple Silicon Benchmark", antekapetanovic.com, 2026
+    https://antekapetanovic.com/blog/qwen3.5-apple-silicon-benchmark/
