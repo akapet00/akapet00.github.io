@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Engineering: From Zero to Hero — DevDays 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --orange: #FF6600;
+    --blue: #1A1A2E;
+    --muted: #F5F5F5;
+    --grey: #999;
+    --light-grey: #ddd;
+  }
+
+  .reveal {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+  }
+  .reveal .slides { text-align: center; }
+  .reveal .slides section {
+    padding: 40px 60px;
+    display: flex !important; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 100%; box-sizing: border-box;
+  }
+
+  .reveal h1 { font-size: 3.2em; font-weight: 800; line-height: 1.1; margin: 0; text-transform: none; }
+  .reveal h2 { font-size: 2.4em; font-weight: 700; line-height: 1.15; margin: 0; text-transform: none; }
+  .reveal h3 { font-size: 1.6em; font-weight: 600; line-height: 1.2; margin: 0; text-transform: none; }
+  .reveal p  { font-size: 1.3em; line-height: 1.4; margin: 0.4em 0; }
+  .reveal .small { font-size: 0.7em; color: var(--grey); }
+  .reveal .tiny  { font-size: 0.55em; color: var(--grey); }
+
+  .orange { color: var(--orange); }
+  .blue   { color: var(--blue); }
+  .grey   { color: var(--grey); }
+
+  .big-word { font-size: 5em; font-weight: 900; line-height: 1; }
+  .mega-word { font-size: 3.6em; font-weight: 900; line-height: 1.1; }
+
+  /* Context Rot text effect */
+  .rot-text {
+    font-size: 5em; font-weight: 900; color: #4a7c3f;
+    display: inline-block; position: relative;
+    animation: rot-wobble 2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(74, 124, 63, 0.3);
+  }
+  .rot-text::before {
+    content: '~'; position: absolute; top: -40px; left: 50%;
+    transform: translateX(-50%); font-size: 0.5em; color: #8fbc8f;
+    animation: stink-float 1.5s ease-in-out infinite; opacity: 0.7;
+  }
+  .rot-text::after {
+    content: '~'; position: absolute; top: -30px; right: 10%;
+    font-size: 0.4em; color: #8fbc8f;
+    animation: stink-float 1.8s ease-in-out infinite 0.3s; opacity: 0.5;
+  }
+  @keyframes rot-wobble {
+    0%, 100% { transform: rotate(-1deg) skewX(-1deg); }
+    50% { transform: rotate(1deg) skewX(1deg); }
+  }
+  @keyframes stink-float {
+    0% { transform: translateY(0) translateX(-50%); opacity: 0.7; }
+    100% { transform: translateY(-20px) translateX(-50%); opacity: 0; }
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 20px 0; width: 100%;
+  }
+  .timeline-node {
+    display: flex; flex-direction: column; align-items: center;
+    flex: 1; position: relative; min-width: 0;
+  }
+  .timeline-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--light-grey); border: 3px solid var(--light-grey);
+    z-index: 2; transition: all 0.3s; flex-shrink: 0;
+  }
+  .timeline-node.active .timeline-dot {
+    background: var(--orange); border-color: var(--orange);
+    box-shadow: 0 0 0 6px rgba(255,102,0,0.15);
+  }
+  .timeline-node.passed .timeline-dot { background: var(--blue); border-color: var(--blue); }
+  .timeline-label {
+    font-size: 0.5em; color: var(--grey); margin-top: 10px;
+    text-align: center; line-height: 1.2; max-width: 100px;
+  }
+  .timeline-node.active .timeline-label { color: var(--orange); font-weight: 700; }
+  .timeline-node.passed .timeline-label { color: var(--blue); }
+  .timeline-connector { height: 3px; background: var(--light-grey); flex: 0.5; margin-top: -24px; z-index: 1; }
+  .timeline-connector.active { background: var(--orange); }
+  .timeline-connector.passed { background: var(--blue); }
+
+  /* Progress Bar */
+  .progress-bar {
+    display: flex; gap: 4px; height: 4px;
+    width: 100%; margin-top: 40px;
+  }
+  .progress-bar .seg { flex: 1; background: var(--light-grey); border-radius: 2px; }
+  .progress-bar .seg.done { background: var(--blue); }
+  .progress-bar .seg.current { background: var(--orange); }
+  .progress-labels {
+    display: flex; font-size: 0.55em; color: var(--grey);
+    width: 100%; margin-top: 6px;
+  }
+  .progress-labels span { flex: 1; text-align: center; }
+  .progress-labels span.current { color: var(--orange); font-weight: 700; }
+
+  /* Segment bars */
+  .seg-bar {
+    display: flex; height: 50px; border-radius: 8px;
+    overflow: hidden; width: 100%; margin: 10px 0;
+  }
+  .seg-bar div {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.5em; font-weight: 600; color: white; padding: 0 6px;
+    white-space: nowrap; overflow: hidden;
+  }
+
+  /* Flow diagrams */
+  .flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: nowrap; }
+  .flow-box {
+    padding: 20px 28px; border-radius: 12px; font-weight: 700; font-size: 0.9em;
+  }
+  .flow-arrow { font-size: 1.5em; color: var(--grey); padding: 0 10px; }
+  .flow-box.active-box { background: var(--orange); color: white; }
+  .flow-box.blue-box { background: var(--blue); color: white; }
+  .flow-box.muted-box { background: #e8e8e8; color: var(--text); }
+
+  /* Architecture */
+  .arch { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0 auto; }
+  .arch-row { display: flex; gap: 16px; justify-content: center; }
+  .arch-box {
+    padding: 16px 24px; border-radius: 10px; font-weight: 700;
+    font-size: 0.75em; min-width: 140px; text-align: center;
+  }
+  .arch-connector { width: 3px; height: 24px; background: var(--light-grey); }
+
+  /* Code */
+  .reveal pre { width: 100%; font-size: 0.55em; box-shadow: none; }
+  .reveal code {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Menlo, Consolas, monospace;
+    background: var(--muted); padding: 2px 6px; border-radius: 4px; font-size: 0.9em;
+  }
+  .reveal pre code {
+    padding: 24px; border-radius: 12px; background: var(--muted);
+    line-height: 1.5; max-height: none;
+  }
+
+  /* Quote */
+  .reveal blockquote {
+    border-left: 5px solid var(--orange); padding: 20px 30px; margin: 20px auto;
+    background: var(--muted); border-radius: 0 12px 12px 0; max-width: 750px;
+    font-style: italic; box-shadow: none; text-align: left;
+  }
+  .reveal blockquote p { font-size: 1.1em; }
+
+  /* Footnote */
+  .footnote {
+    position: absolute; bottom: 20px; left: 60px; right: 60px;
+    font-size: 0.55em; color: #777; text-align: left; line-height: 1.5;
+  }
+  .footnote p { margin: 0; }
+
+  /* Optimization bars */
+  .opt-bars { display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin: 0 auto; }
+  .opt-bar { display: flex; align-items: center; gap: 12px; }
+  .opt-bar-label { font-size: 0.8em; font-weight: 700; min-width: 160px; text-align: right; }
+  .opt-bar-fill {
+    height: 36px; border-radius: 6px; display: flex; align-items: center;
+    padding: 0 12px; color: white; font-weight: 600; font-size: 0.6em;
+  }
+
+  /* Demo chat */
+  .demo-chat {
+    max-width: 650px; margin: 0 auto; text-align: left;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .demo-msg {
+    padding: 12px 18px; border-radius: 14px; font-size: 0.65em; line-height: 1.4; max-width: 85%;
+  }
+  .demo-msg.user {
+    background: var(--orange); color: white; align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+  .demo-msg.agent {
+    background: var(--muted); color: var(--text); align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .demo-msg .agent-tag { font-size: 0.75em; font-weight: 700; color: var(--blue); display: block; margin-bottom: 4px; }
+
+  /* Phase cards */
+  .phases { display: flex; gap: 16px; justify-content: center; align-items: stretch; }
+  .phase-card {
+    background: var(--muted); border-radius: 12px; padding: 24px 30px;
+    flex: 1; text-align: center; max-width: 300px;
+  }
+  .phase-card h4 { margin: 0 0 8px 0; font-size: 0.75em; font-weight: 800; color: var(--text); text-transform: lowercase; }
+  .phase-card p { font-size: 0.6em; margin: 0; color: var(--text); }
+  .phase-num { font-size: 1.5em; font-weight: 900; color: var(--orange); }
+
+  /* Takeaways */
+  .takeaways { text-align: left; max-width: 700px; margin: 0 auto; }
+  .takeaways .item { display: flex; gap: 16px; margin: 16px 0; align-items: baseline; }
+  .takeaways .num { font-size: 1.4em; font-weight: 900; color: var(--orange); min-width: 36px; }
+  .takeaways .txt { font-size: 1em; font-weight: 600; }
+
+  /* Scissors */
+  .scissors { font-size: 1.8em; display: inline-block; animation: snip 1s ease-in-out infinite; }
+  @keyframes snip {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-15deg); }
+  }
+
+  /* Figure */
+  .fig { max-width: 100%; border-radius: 8px; }
+  .fig-small { max-height: 200px; border-radius: 8px; }
+  .fig-medium { max-height: 380px; border-radius: 8px; }
+  .fig-large { max-height: 520px; border-radius: 8px; }
+
+  /* Refs list */
+  .refs {
+    text-align: left; font-size: 0.42em; color: var(--grey);
+    line-height: 1.6; max-width: 800px; margin: 16px auto 0;
+    columns: 2; column-gap: 30px;
+  }
+
+  /* Definitions stacked */
+  .def-stack { max-width: 750px; margin: 0 auto; text-align: left; }
+  .def-item {
+    padding: 14px 20px; margin: 8px 0; background: var(--muted);
+    border-radius: 8px; border-left: 4px solid var(--orange);
+  }
+  .def-item p { font-size: 0.85em; margin: 0; }
+  .def-item .def-source { font-size: 0.6em; color: var(--grey); margin-top: 4px; }
+
+  /* Context window diagram */
+  .context-window {
+    border: 3px solid var(--blue); border-radius: 12px; padding: 24px;
+    position: relative; max-width: 700px; margin: 0 auto; background: #fafafa;
+  }
+  .context-window::before {
+    content: 'Context Window'; position: absolute; top: -14px; left: 20px;
+    background: white; padding: 0 8px; font-size: 0.6em; font-weight: 700; color: var(--blue);
+  }
+
+  /* Greentext */
+  .greentext {
+    text-align: left; max-width: 700px; margin: 0 auto;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Menlo, Consolas, monospace;
+    font-size: 0.55em; line-height: 1.4;
+  }
+  .greentext p { margin: 2px 0; }
+  .greentext .gt { color: #789922; }
+  .magic {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Menlo, Consolas, monospace;
+    background: #1a1a1a; color: #00ff00; padding: 8px 20px; border-radius: 4px;
+    font-weight: 700; font-size: 1.8em; display: inline-block; margin-top: 16px;
+    white-space: nowrap;
+  }
+
+  /* Overrides */
+  .reveal .slides section .fragment.visible { opacity: 1; }
+  .reveal .slide-number { display: none; }
+  .reveal .controls { color: var(--orange); }
+  .reveal .progress { color: var(--orange); height: 3px; }
+  .reveal .slides section { transition: none !important; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================ -->
+<!-- S1: HOOK (slides 1-5)                                        -->
+<!-- ============================================================ -->
+
+<!-- 1: Title -->
+<section>
+  <h1>context engineering</h1>
+  <p class="orange" style="font-size:1.1em; margin-top:40px;">ante kapetanovic &middot; devdays 2026</p>
+  <aside class="notes">Welcome everyone. I'm Ante, and today we're talking about context engineering. 10s</aside>
+</section>
+
+<!-- 2: familiar with this? -->
+<section>
+  <h2>you familiar with this situation?</h2>
+  <aside class="notes">Quick question for the room. 8s</aside>
+</section>
+
+<!-- 3: The scenario (greentext) -->
+<section>
+  <div class="greentext">
+    <p class="gt fragment" data-fragment-index="0">&gt; you work with a coding agent</p>
+    <p class="gt fragment" data-fragment-index="1">&gt; all goes well, 1000 lines of code</p>
+    <p class="gt fragment" data-fragment-index="2">&gt; still great, 10000 lines of code</p>
+    <p class="gt fragment" data-fragment-index="3">&gt; tests pass &#129304;</p>
+    <p class="gt fragment" data-fragment-index="4">&gt; "let me just do a small tweak"</p>
+    <p class="gt fragment" data-fragment-index="5">&gt; code doesn't compile</p>
+    <p class="gt fragment" data-fragment-index="6">&gt; "think harder!!1"</p>
+    <p class="gt fragment" data-fragment-index="7">&gt; 1000 lines of code more</p>
+    <p class="gt fragment" data-fragment-index="8">&gt; same error</p>
+    <p class="gt fragment" data-fragment-index="9">&gt; coding agent says the magic words:</p>
+  </div>
+  <p class="fragment" data-fragment-index="10"><span class="magic">"You're absolutely right."</span></p>
+  <aside class="notes">You know this pattern. Everything's going well. Thousands of lines. Tests pass. Then you need one small tweak and it all falls apart. Same error, more code. And then the agent says the magic words. 20s</aside>
+</section>
+
+<!-- 4: Context rot (reveal sequence) -->
+<section>
+  <div style="margin-top:40px;">
+    <p style="font-size:1.4em; font-weight:600; color:var(--grey);" class="fragment fade-in" data-fragment-index="0">you've experienced</p>
+    <div style="margin-top:20px;">
+      <span class="fragment fade-in" data-fragment-index="1" style="font-size:5em; font-weight:900;"><span class="orange">context </span></span>
+      <span class="fragment fade-in" data-fragment-index="2"><span class="rot-text"> rot</span></span>
+    </div>
+  </div>
+  <aside class="notes">You've experienced... context... rot. And it's the single biggest obstacle to productive AI-assisted development. 15s</aside>
+</section>
+
+<!-- 5: Not the model -->
+<section>
+  <h2>this has nothing to do with<br>a model itself because...</h2>
+  <aside class="notes">And the fix has nothing to do with switching to a better model. Let me show you why. 10s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S2: LLM CAPABILITIES (slides 6-12)                           -->
+<!-- ============================================================ -->
+
+<!-- 6: Section - Capabilities -->
+<section>
+  <h1>llms are capable</h1>
+  <div class="progress-bar">
+    <div class="seg current"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span class="current">intelligence</span><span>context</span><span>timeline</span><span>context rot</span><span>deal with it</span><span>demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">LLMs have never been more capable. Let me show you the data. 8s</aside>
+</section>
+
+<!-- 7: Intelligence index -->
+<section>
+  <h3 style="margin-bottom:16px;">artificial analysis intelligence index</h3>
+  <img src="figures/bench-intelligence.png" class="fig-medium" alt="Intelligence Index from Artificial Analysis">
+  <div class="footnote">
+    <p>Artificial Analysis, "LLM Benchmarks", artificialanalysis.ai, 2025</p>
+  </div>
+  <aside class="notes">This is the intelligence index from artificialanalysis.ai. All top models scoring in the same range. GPT, Claude, Gemini, Grok. 15s</aside>
+</section>
+
+<!-- 8: Agentic capabilities -->
+<section>
+  <h3 style="margin-bottom:16px;">artificial analysis agentic index</h3>
+  <img src="figures/bench-agentic.png" class="fig-medium" alt="Agentic capabilities from Artificial Analysis">
+  <div class="footnote">
+    <p>Artificial Analysis, "LLM Benchmarks", artificialanalysis.ai, 2025</p>
+  </div>
+  <aside class="notes">Agentic capabilities are also getting better across the board. Tool use, multi-step reasoning, planning. 15s</aside>
+</section>
+
+<!-- 9: Coding -->
+<section>
+  <h3 style="margin-bottom:16px;">artificial analysis coding index</h3>
+  <img src="figures/bench-coding.png" class="fig-medium" alt="Coding benchmarks from Artificial Analysis">
+  <div class="footnote">
+    <p>Artificial Analysis, "LLM Benchmarks", artificialanalysis.ai, 2025</p>
+  </div>
+  <aside class="notes">Especially for coding tasks. These models are all extremely competent coders. 15s</aside>
+</section>
+
+<!-- 10: All capable -->
+<section>
+  <h3>all of them very capable and<br>indistinguishable* for day-to-day tasks</h3>
+  <p class="small" style="margin-top:16px;">*prove me wrong ¯\_(ツ)_/¯</p>
+  <aside class="notes">All of them. Some are more benchmaxxed than others, but for day-to-day development tasks, you'd be hard pressed to tell the difference. 15s</aside>
+</section>
+
+<!-- 11a: Even open source - HuggingFace -->
+<section>
+  <h3 style="margin-bottom:16px;">even small open-weight models</h3>
+  <img src="figures/bench-huggingface.png" style="max-height:440px; border-radius:8px;" alt="Julien Chaumond on Qwen 3.5">
+  <div class="footnote">
+    <p>Chaumond, "Qwen 3.5 Post", LinkedIn, 2025</p>
+  </div>
+  <aside class="notes">Even open-weight models. The CTO of Hugging Face says Qwen 3.5 35B punches way above its weight. Reliable tool calling, stable agentic loops, only 3 billion active params. 15s</aside>
+</section>
+
+<!-- 11b: Even open source - local benchmark -->
+<section>
+  <h3 style="margin-bottom:16px;">running locally on my laptop</h3>
+  <img src="figures/bench-qwen-local.png" style="max-height:720px; border-radius:8px;" alt="Qwen 3.5 tok/s on Apple Silicon">
+  <div class="footnote">
+    <p>Kapetanovic, "Qwen 3.5 Apple Silicon Benchmark", antekapetanovic.com, 2026</p>
+  </div>
+  <aside class="notes">And this runs on my M4 Mac at 130 tokens per second. Locally. No API. These models are extremely capable. 15s</aside>
+</section>
+
+<!-- 12: But... -->
+<section>
+  <h2 style="margin-top:20px;">what determines how well<br>they perform is <span class="orange">the context</span></h2>
+  <aside class="notes">But. What actually determines how well these models perform is not their intelligence, coding, or agentic index. It's the information we feed into them. The context. 15s</aside>
+</section>
+
+<!-- 12b: Role shift -->
+<section>
+  <div style="margin-top:40px;">
+    <p style="font-size:2.4em; font-weight:800;">software engineers</p>
+    <p class="fragment" data-fragment-index="0" style="font-size:2.4em; color:var(--grey); margin-top:16px;">&darr;</p>
+    <p class="fragment" data-fragment-index="0" style="font-size:2.4em; font-weight:800;"><span class="orange">context engineers</span></p>
+  </div>
+  <aside class="notes">If context determines output quality, then our job is changing. We're not just software engineers anymore. We're context engineers. And that goes for researchers, data scientists, ML engineers — everyone working with agents. 15s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S3: CONTEXT ENGINEERING (slides 13-17)                       -->
+<!-- ============================================================ -->
+
+<!-- 13: Section - Context -->
+<section>
+  <h1>what is context engineering?</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg current"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span class="current">context</span><span>timeline</span><span>context rot</span><span>deal with it</span><span>demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">So what is context engineering? 8s</aside>
+</section>
+
+<!-- 14: Definitions -->
+<section>
+  <div style="max-width:700px; margin:0 auto; text-align:left;">
+    <div class="fragment" data-fragment-index="0">
+      <p style="font-size:1em; font-style:italic;">"designing, structuring, and providing precise, relevant information to an LLM"</p>
+      <p style="font-size:0.55em; color:var(--grey); margin-bottom:24px;">Anthropic, "Context Engineering" docs, 2025</p>
+    </div>
+    <div class="fragment" data-fragment-index="1">
+      <p style="font-size:1em; font-style:italic;">"strategies for curating and maintaining the optimal set of tokens"</p>
+      <p style="font-size:0.55em; color:var(--grey); margin-bottom:24px;">Elastic Engineering Blog, 2025</p>
+    </div>
+    <div class="fragment" data-fragment-index="2">
+      <p style="font-size:1em; font-style:italic;">"the job of figuring out what should be in the context window"</p>
+      <p style="font-size:0.55em; color:var(--grey);">Latent Space / Chroma Research, 2025</p>
+    </div>
+  </div>
+  <aside class="notes">Many definitions. Anthropic says designing and structuring precise information. Elastic: curating the optimal set of tokens. Chroma puts it simply: figuring out what should be in the context window. But I like a different framing. 20s</aside>
+</section>
+
+<!-- 15: HOW > WHAT -->
+<section>
+  <h2><span class="orange" style="font-size:1.3em;">HOW</span> information is presented<br>matters more than what</h2>
+  <aside class="notes">How you present information matters more than what information you include. Structure, ordering, relevance. 15s</aside>
+</section>
+
+<!-- 16: My definition -->
+<section>
+  <h2>context engineering is<br>the art of avoiding<br><span class="rot-text" style="font-size:1em;">context rot</span></h2>
+  <aside class="notes">Or as I like to put it: context engineering is the art of avoiding context rot. Let me explain what that means. But first, let's understand how we got here. 15s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S4: AI-ERA TIMELINE (slides 17-29)                           -->
+<!-- ============================================================ -->
+
+<!-- 17: Section - Timeline -->
+<section>
+  <h1>how did we get here?</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg done"></div><div class="seg current"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span>context</span><span class="current">timeline</span><span>context rot</span><span>deal with it</span><span>demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">Let's map out the AI era in seven stages. 8s</aside>
+</section>
+
+<!-- 18: Full timeline dimmed -->
+<section>
+  <h3 style="margin-bottom:30px;">the seven layers of (the most recent) AI progress</h3>
+  <div class="timeline">
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <aside class="notes">Seven stages. Each one builds on the last. 10s</aside>
+</section>
+
+<!-- 19: Text Prediction -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2020-22</h3>
+  <p style="font-size:0.9em;">GPT-3, powerful autocomplete, context management didn't matter much</p>
+  <aside class="notes">GPT-3 era. Powerful autocomplete. You give it text, it predicts what comes next. Context window was 2048 tokens so you didn't have what to manage. 15s</aside>
+</section>
+
+<!-- 20: Instruction Following -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2022</h3>
+  <p style="font-size:0.9em;">chatGPT, rlhf, the "copy-paste" era, context is cheap</p>
+  <aside class="notes">ChatGPT. The copy-paste era begins. A function here, a regex there. Tasks are small, context is still small at 4096 tokens. 15s</aside>
+</section>
+
+<!-- 21: Reasoning -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2023</h3>
+  <p style="font-size:0.9em;">chain-of-thought and "think step by step," better answers, but still short context</p>
+  <aside class="notes">Chain-of-thought reasoning. Better answers, but still one question, one answer. Context windows are manageable. 15s</aside>
+</section>
+
+<!-- 22: Tool Use -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2023</h3>
+  <p style="font-size:0.9em;">function calling, apis, models touch the real world</p>
+  <aside class="notes">This is where things change. Function calling. The model reads files, queries databases. Every tool call adds tokens. Context starts growing. 15s</aside>
+</section>
+
+<!-- 23: ReAct Loops -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2023-24</h3>
+  <p style="font-size:0.9em;">reason + act, copilot, code completion, iterative tool calls fill the window</p>
+  <aside class="notes">ReAct: reason, act, observe, repeat. Copilot era. Each loop iteration adds more tokens. The window fills up fast. 15s</aside>
+</section>
+
+<!-- 24: Planning Agents -->
+<section>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector"></div>
+    <div class="timeline-node"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2024-25</h3>
+  <p style="font-size:0.9em;">cursor, claude code, "vibe" coding, multi-file edits, test runs, mcp servers</p>
+  <aside class="notes">Cursor, Claude Code, Windsurf. Vibe coding era. Multi-file edits, running tests, connecting to MCP servers. Context is exploding. 15s</aside>
+</section>
+
+<!-- 25: Persistent Agents -->
+<section>
+  <h2 style="margin-bottom:30px;">we are here</h2>
+  <div class="timeline">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 style="margin-top:40px;">2025-26</h3>
+  <p style="font-size:0.9em;">spec-driven dev, ralph loops, get-shit-done, tons of skills, memory, scheduling</p>
+  <aside class="notes">Where we are now. Persistent agents that run continuously. They have memory, skills, scheduling. Context management is now the critical skill. 15s</aside>
+</section>
+
+<!-- 26: Inflection point -->
+<section>
+  <h2>the inflection point</h2>
+  <div class="timeline" style="margin-top:30px;">
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">text prediction</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">instruction following</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node passed"><div class="timeline-dot"></div><div class="timeline-label">reasoning</div></div>
+    <div class="timeline-connector passed"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">tool use</div></div>
+    <div class="timeline-connector active"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">reAct loops</div></div>
+    <div class="timeline-connector active"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">planning agents</div></div>
+    <div class="timeline-connector active"></div>
+    <div class="timeline-node active"><div class="timeline-dot"></div><div class="timeline-label">persistent agents</div></div>
+  </div>
+  <h3 class="orange" style="margin-top:10px;">scope explosion, context became the bottleneck</h3>
+  <aside class="notes">From tool use onward, context exploded. More tools, MCP servers, multimodal inputs, bigger tasks. Context became THE bottleneck. 15s</aside>
+</section>
+
+<!-- what fills the context window -->
+<section>
+  <h3 style="margin-bottom:20px;">what fills a context window?</h3>
+  <div style="max-width:600px; margin:0 auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">system prompt, tool schemas, conversation history, tool results, agent scratchpad</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em; margin-top:16px;">attention is O(n&sup2;), double the context, 4x the compute</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">KV cache grows linearly per layer</p>
+  </div>
+  <aside class="notes">What fills the context window? System prompt, tool schemas, conversation history, tool results, agent scratchpad. All competing for the same space. And that space is expensive — attention is quadratic, KV cache grows linearly per layer. 15s</aside>
+</section>
+
+<!-- the window is finite -->
+<section>
+  <h2>the window is finite and expensive,<br>and it fills fast</h2>
+  <aside class="notes">The window is finite, expensive, and it fills fast. 8s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S5: CONTEXT ROT                                               -->
+<!-- ============================================================ -->
+
+<!-- 30: Section - Rot -->
+<section>
+  <h1>persistence feeds on tokens</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg current"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span>context</span><span>timeline</span><span class="current">context rot</span><span>deal with it</span><span>demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">Chroma published a technical report studying context rot across 18 LLMs and 200K API calls. They identified 7 stages. 12s</aside>
+</section>
+
+<!-- 31: Stage 1 - Fresh start -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 1: fresh start</h3>
+  <img src="figures/rot-stage-1.png" height="720" class="fig-large" alt="Context window 1: system instructions, custom agents, memory files, skills/tools">
+  <aside class="notes">Stage 1. Fresh context window. System instructions, agent definitions, memory files, tools all load in. The window is mostly empty. This is peak performance. 15s</aside>
+</section>
+
+<!-- 32: Stage 2 - Conversation begins -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 2: conversation begins</h3>
+  <img src="figures/rot-stage-2.png" height="720" class="fig-large" alt="Context filling with user messages, subagents, tool calls">
+  <aside class="notes">Stage 2. Conversation starts. User messages, tool calls, subagent results pile up. Context grows naturally. Still fine. 15s</aside>
+</section>
+
+<!-- 33: Stage 3 - Agent steering -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 3: agent steering</h3>
+  <img src="figures/rot-stage-3.png" height="720" class="fig-large" alt="Context growing with corrections and redirects">
+  <aside class="notes">Stage 3. You start steering. Corrections, redirects. The context keeps growing. Context window starts filling. 15s</aside>
+</section>
+
+<!-- 34: Stage 4 - Dumb Zone -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 4: <span class="orange">the dumb zone</span></h3>
+  <img src="figures/rot-stage-4.png" height="720" class="fig-large" alt="Entering the dumb zone at ~40% utilization">
+  <aside class="notes">Stage 4. The dumb zone. Around 40% context utilization, the model starts losing the plot. Contradictions, loops, apologizing. "You're absolutely right." Sound familiar? 20s</aside>
+</section>
+
+<!-- chroma's data -->
+<section>
+  <h3 style="margin-bottom:16px;">chroma's findings</h3>
+  <img src="figures/chroma-hero-plot.png" class="fig-medium" alt="Performance degradation by input length across Claude Sonnet 4, GPT-4.1, Qwen3-32B, Gemini 2.5 Flash">
+  <div class="footnote">
+    <p>Chroma, "Context Rot", technical report, 2025</p>
+  </div>
+  <aside class="notes">Chroma tested 18 LLMs with 200K API calls. This is the result. Performance drops consistently as context grows. Claude, GPT, Qwen, Gemini — all of them degrade. The dumb zone is real and measurable. 15s</aside>
+</section>
+
+<!-- 35: Stage 5 - Compaction triggered -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 5: compaction triggered</h3>
+  <img src="figures/rot-stage-5.png" height="720" class="fig-large" alt="Automatic compaction happens">
+  <aside class="notes">Stage 5. The system tries to save itself. Automatic compaction kicks in, summarizing old messages to free space. 15s</aside>
+</section>
+
+<!-- 36: Stage 6 - Compaction trap -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 6: <span class="orange">the compaction trap</span></h3>
+  <img src="figures/rot-stage-6.png" height="720" class="fig-large" alt="Summary of summary loses detail">
+  <aside class="notes">Stage 6. The compaction trap. The degraded model creates summaries of summaries. Critical details vanish. A poor-man's filtering of the entire previous context. 15s</aside>
+</section>
+
+<!-- 37: Stage 7 - Second window -->
+<section>
+  <h3 style="margin-bottom:16px;">stage 7: second window</h3>
+  <img src="figures/rot-stage-7.png" height="720" class="fig-large" alt="New window starts with summary of rotted context">
+  <aside class="notes">Stage 7. Second window. You start a new session, seeded with a summary of rotted context. You've imported the rot. Errors compound from here. 15s</aside>
+</section>
+
+<!-- 39: More != better -->
+<section>
+  <div class="mega-word">more context &ne;<br>better results</div>
+  <aside class="notes">More context does not mean better results. 8s</aside>
+</section>
+
+<!-- 40: Better = better -->
+<section>
+  <div class="mega-word"><span class="orange">better</span> context =<br>better results</div>
+  <aside class="notes">Better context means better results. Quality over quantity. 8s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S6: SOLUTIONS                                                 -->
+<!-- ============================================================ -->
+
+<!-- Section - Solutions -->
+<section>
+  <h1>how do we make it better?</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg current"></div><div class="seg"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span>context</span><span>timeline</span><span>context rot</span><span class="current">deal with it</span><span>demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">Context rots. And as Dex Horthy puts it: please read the code. LLMs are slop generators. So what do we do about it? Practical techniques. 10s</aside>
+</section>
+
+<!-- early restart -->
+<section>
+  <h2>early restart</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">kill the session <strong>before</strong> the dumb zone</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">don't wait for quality to degrade, restart at ~40% utilization</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">one task, one session</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">cheapest technique, biggest impact</p>
+  </div>
+  <aside class="notes">Technique one: early restart. Kill the session before the dumb zone. Don't wait for quality to degrade — restart around 40% utilization. One task, one session. It's the cheapest technique with the biggest impact. 15s</aside>
+</section>
+
+<!-- intentional compaction -->
+<section>
+  <h2>intentional compaction</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">auto-compaction summarizes blindly and you lose critical details</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">the agent can write the summary, but <strong>you</strong> decide what goes in</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">steer what survives between sessions</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">use your own <code>/compact</code> with explicit instructions, not on autopilot</p>
+  </div>
+  <aside class="notes">Intentional compaction. Auto-compaction summarizes blindly and you lose critical details. The agent can write the summary, but you decide what goes in. Steer what survives between sessions. Use your own <code>/compact</code> with explicit instructions, not on autopilot. 15s</aside>
+</section>
+
+<!-- spec-driven development -->
+<section>
+  <h2>spec-driven development</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">write the spec before you write the code</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">the spec is the contract between human intent and agent execution</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">agents work best when requirements are explicit and bounded</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">each spec gets a fresh context window</p>
+  </div>
+  <div class="footnote">
+    <p>Boeckeler, "Spec-Driven Development", martinfowler.com, 2026</p>
+  </div>
+  <aside class="notes">Spec-driven development. Write the spec before you write the code. The spec is the contract between human intent and agent execution. Agents work best when requirements are explicit and bounded. Each spec gets a fresh context window. 15s</aside>
+</section>
+
+<!-- RPI: research, plan, implement -->
+<section>
+  <h2>research, plan, implement</h2>
+  <div style="max-width:600px; margin:20px auto 60px; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">research</span> with fresh window, explore codebase, read docs, ask questions not opinions</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">plan</span> with fresh window again, architecture, file changes, test strategy</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">implement</span> also with fresh window, mechanical execution of an approved plan</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">you have to review at every phase boundary!</p>
+  </div>
+  <div class="footnote">
+    <p>Horthy, "What's Missing to Make AI Agents Mainstream", Heavybit, 2026</p>
+    <p>HumanLayer, "Advanced Context Engineering for Coding Agents", github.com/humanlayer, 2025</p>
+  </div>
+  <aside class="notes">RPI: research, plan, implement. Each phase gets a fresh context window. Research — explore the codebase, ask questions not opinions. Plan — architecture, file changes, test strategy. Implement — mechanical execution of an approved plan. Human reviews at every phase boundary. This is your highest-leverage workflow. 20s</aside>
+</section>
+
+<!-- context optimization -->
+<section>
+  <h2>context optimization</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">remove</span> incorrect information first — it actively misleads</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">add</span> what's missing — completeness matters</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">trim</span> noise — less harmful but still wastes budget</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">target <strong>40-60%</strong> utilization for reliable output</p>
+  </div>
+  <div class="footnote">
+    <p>Horthy, "What's Missing to Make AI Agents Mainstream", Heavybit, 2026</p>
+    <p>HumanLayer, "Advanced Context Engineering for Coding Agents", github.com/humanlayer, 2025</p>
+  </div>
+  <aside class="notes">Context optimization. Remove incorrect information first as those actively misleads the model. Then add what's missing. Then trim noise. Target 40 to max. 60 percent utilization - this is very task dependent. No matter how big context windows get, you always get better results if you use less of them. 15s</aside>
+</section>
+
+<!-- 53: Ralph Loops -->
+<section>
+  <h2>ralph loops</h2>
+  <pre style="max-width:500px; margin:16px auto 0;"><code>while :; do
+  cat PROMPT.md | claude --print
+done</code></pre>
+  <div style="max-width:600px; margin:20px auto; text-align:left; position:relative;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">write a plan or spec first</p>
+    <img class="fragment" data-fragment-index="0" src="figures/ralph.webp" alt="Ralph Wiggum" style="position:absolute; top:-40px; right:-180px; max-height:140px; transform:rotate(6deg); opacity:0.85;">
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">convert to atomic tasks (in prd and/or spec)</p>
+    <img class="fragment" data-fragment-index="1" src="figures/ralph.webp" alt="Ralph Wiggum" style="position:absolute; top:60px; left:-190px; max-height:130px; transform:rotate(-8deg) scaleX(-1); opacity:0.85;">
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">run the loop with <strong>fresh context every iteration</strong></p>
+    <img class="fragment" data-fragment-index="2" src="figures/ralph.webp" alt="Ralph Wiggum" style="position:absolute; bottom:10px; right:-170px; max-height:135px; transform:rotate(-10deg); opacity:0.85;">
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">track progress in files &amp; git, not chat</p>
+    <img class="fragment" data-fragment-index="3" src="figures/ralph.webp" alt="Ralph Wiggum" style="position:absolute; bottom:-30px; left:-170px; max-height:140px; transform:rotate(12deg) scaleX(-1); opacity:0.85;">
+  </div>
+  <div class="footnote">
+    <p>Huntley, "Ralph", ghuntley.com, 2025</p>
+    <p>Kapetanovic, "Ralph Wiggum", antekapetanovic.com, 2026</p>
+  </div>
+  <aside class="notes">Ralph loops. It's just a while loop in bash. Write a plan or spec first, convert it to atomic tasks, then let the loop run. Each iteration gets fresh context — zero rot. Track progress through files and git, never in chat. The agent is truly stateless. 20s</aside>
+</section>
+
+<!-- 54: GSD -->
+<section>
+  <h2>get shit done (GSD)</h2>
+  <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+    <div style="padding:10px 16px; background:var(--muted); border-radius:8px; font-size:0.7em; font-weight:600; font-family:monospace;">PROJECT.md</div>
+    <div style="padding:10px 16px; background:var(--muted); border-radius:8px; font-size:0.7em; font-weight:600; font-family:monospace;">REQUIREMENTS.md</div>
+    <div style="padding:10px 16px; background:var(--muted); border-radius:8px; font-size:0.7em; font-weight:600; font-family:monospace;">ROADMAP.md</div>
+    <div style="padding:10px 16px; background:var(--muted); border-radius:8px; font-size:0.7em; font-weight:600; font-family:monospace;">STATE.md</div>
+  </div>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">all state lives in markdown files, never in context</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">XML-structured plans split into parallel execution waves</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">each wave gets a fresh window, atomic git commits as checkpoints</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">agent reads state on boot — crash, restart, resume</p>
+  </div>
+  <div class="footnote">
+    <p>GSD, "Get Shit Done", github.com/gsd-build, 2025</p>
+  </div>
+  <aside class="notes">GSD: Get Shit Done. All state externalized into markdown files — PROJECT, REQUIREMENTS, ROADMAP, STATE. XML-structured plans split work into parallel execution waves. Each wave gets a fresh context window, atomic git commits as checkpoints. The agent reads state on boot, so you can crash, restart, and resume with zero context loss. 20s</aside>
+</section>
+
+<!-- 55: Full autonomy -->
+<section>
+  <h2>full autonomy?</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">Gas Town</span> — 20-30 concurrent Claude instances, fully autonomous</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">OpenClaw</span> — 145K GitHub stars, acquired by OpenAI</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">impressive results, but the human is fully out of the loop</p>
+  </div>
+  <div class="footnote">
+    <p>Yegge, "Welcome to Gas Town", sourcegraph.com, 2026</p>
+    <p>Steinberger, "OpenClaw", github.com, 2025-26</p>
+  </div>
+  <aside class="notes">Frontier approaches. Gas Town runs 20-30 Claude instances concurrently, fully autonomous. OpenClaw got 145K GitHub stars and Steinberger was hired by OpenAI. Impressive results. But the human is fully out of the loop. 15s</aside>
+</section>
+
+<!-- 56: why not -->
+<section>
+  <h2>why I didn't go there</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">as a researcher, you lose ownership of the idea, hypothesis, and execution</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">as a developer, you can't read, comprehend, or track the code</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">no supervision means security concerns</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;"><strong>ralph + sandboxing = controlled autonomy</strong></p>
+  </div>
+  <div class="footnote">
+    <p>Horthy, "What's Missing to Make AI Agents Mainstream", Heavybit, 2026</p>
+  </div>
+  <aside class="notes">Why didn't I go there? As a researcher, you lose ownership. The idea, the hypothesis, the execution — none of it is yours anymore. You can't read or track what's being written. Security is a real concern. Ralph loops with sandboxing give you controlled autonomy — you stay in the loop without micromanaging. 20s</aside>
+</section>
+
+<!-- B1: planner-generator-evaluator -->
+<section>
+  <h2>planner → generator → evaluator</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">models are terrible critics of their own output</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">separate who builds from who judges (GAN-inspired)</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">evaluator</span> uses Playwright to test the live app, not just read code</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">solo</span> 20 min, $9, broken — <strong>harness</strong> 6 hrs, $200, functional</p>
+  </div>
+  <div class="footnote">
+    <p>Rajasekaran, "Harness Design for Long-Running Apps", anthropic.com/engineering, 2026</p>
+    <p>Anthropic, "Building Effective Agents", anthropic.com/engineering, 2024</p>
+  </div>
+  <aside class="notes">Fresh from Anthropic, published two days ago. A three-agent architecture inspired by GANs and community patterns like Ralph. Models are terrible critics of their own output. So separate building from judging. The evaluator uses Playwright to interact with the live app. Results: a solo agent spent 20 minutes and 9 dollars on a broken app. The harness spent 6 hours and 200 dollars on a fully functional one. 25s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S8: PROOF - AGENTIC CRS                                      -->
+<!-- ============================================================ -->
+
+<!-- Section header -->
+<section>
+  <h1>agentic CRS for e-commerce</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg current"></div><div class="seg"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span>context</span><span>timeline</span><span>context rot</span><span>deal with it</span><span class="current">demo</span><span>playbook</span>
+  </div>
+  <aside class="notes">Theory is nice. Let me show you it works. 8s</aside>
+</section>
+
+<!-- Problem definition -->
+<section>
+  <h2>the problem</h2>
+  <div style="max-width:650px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">real poc for a real client — <strong>taw9eel.com</strong> (Kuwait)</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">multi-agent conversational recommendations, bilingual AR/EN, RAG + reranking</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">research, architecture, multi-agent design, catalogue pipeline, testing</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em; margin-top:12px;"><strong>cannot be solved in one session</strong></p>
+  </div>
+  <aside class="notes">My boss Emanuel told me months ago to build a CRS prototype for taw9eel.com, a Kuwaiti e-commerce platform. Real POC for a real client. Multi-agent, bilingual, RAG-based, with reranking. This requires research, architecture, multi-agent coordination, a full catalogue pipeline, testing. Cannot be solved in one session. Context engineering is the only path. 20s</aside>
+</section>
+
+<!-- Architecture -->
+<section>
+  <h2>architecture</h2>
+  <div class="arch">
+    <div style="display:flex; gap:16px; justify-content:center; align-items:center;">
+      <div class="arch-box" style="background:var(--muted); color:var(--text); font-size:0.6em;">greeting<br>fast-path</div>
+      <div class="arch-box" style="background:var(--orange); color:white; min-width:220px;">orchestrator<br><span style="font-size:0.7em; font-weight:400;">intent classification + dispatch</span></div>
+    </div>
+    <div class="arch-row" style="margin-top:16px;">
+      <div class="arch-box" style="background:var(--blue); color:white;">elicitor<br><span style="font-size:0.7em; font-weight:400;">LLM sub-agent</span></div>
+      <div class="arch-box" style="background:var(--blue); color:white;">searcher<br><span style="font-size:0.7em; font-weight:400;">vector search</span></div>
+      <div class="arch-box" style="background:var(--blue); color:white;">reranker<br><span style="font-size:0.7em; font-weight:400;">Cohere API</span></div>
+      <div class="arch-box" style="background:var(--blue); color:white;">selector<br><span style="font-size:0.7em; font-weight:400;">diversity algo</span></div>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:12px; justify-content:center;">
+      <div style="padding:8px 14px; background:var(--muted); border-radius:6px; font-size:0.55em;">PydanticAI</div>
+      <div style="padding:8px 14px; background:var(--muted); border-radius:6px; font-size:0.55em;">ChromaDB</div>
+      <div style="padding:8px 14px; background:var(--muted); border-radius:6px; font-size:0.55em;">Cohere</div>
+      <div style="padding:8px 14px; background:var(--muted); border-radius:6px; font-size:0.55em;">LiteLLM</div>
+      <div style="padding:8px 14px; background:var(--muted); border-radius:6px; font-size:0.55em;">SQLite</div>
+    </div>
+  </div>
+  <div style="max-width:650px; margin:16px auto; text-align:left;">
+    <p style="font-size:0.7em;"><span class="orange" style="font-weight:700;">only the elicitor is an LLM</span> — search, rerank, and selection are direct functions, no LLM overhead</p>
+    <p style="font-size:0.7em;">orchestrator classifies intent into 8 categories, delegates via tools, composes final response</p>
+  </div>
+  <div class="footnote">
+    <p>Maragheh et al., "Multi-Agentic Recommender Systems", RecSys, 2025</p>
+    <p>Nie et al., "Hybrid Multi-Agent CRS with LLM", RecSys, 2024</p>
+  </div>
+  <aside class="notes">The architecture. Greetings hit a fast-path — no LLM call for a predictable "hello". The orchestrator classifies intent into 8 categories and dispatches via tools. Only the elicitor is an actual LLM sub-agent. Search, reranking, and diversity selection are direct async functions — no LLM overhead. All calls go through a single LiteLLM proxy. 20s</aside>
+</section>
+
+<!-- Built in 3 phases -->
+<section>
+  <h2>built in 3 phases</h2>
+  <div class="phases">
+    <div class="phase-card">
+      <div class="phase-num">1</div>
+      <h4>ralph loop</h4>
+      <p>prototype<br>PROMPT.md &rarr; iterate &rarr; working system</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">2</div>
+      <h4>ralph loop</h4>
+      <p>refactoring<br>new SPEC.md &rarr; clean architecture</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">3</div>
+      <h4>manual RPI</h4>
+      <p>cleanup<br>research &rarr; plan &rarr; polish</p>
+    </div>
+  </div>
+  <div style="max-width:600px; margin:16px auto; text-align:left;">
+    <p style="font-size:0.75em;">each phase gets its own <code>PROMPT.md</code> / <code>SPEC.md</code> — fresh context every iteration</p>
+    <p style="font-size:0.75em;">human review between every phase, not just at the end</p>
+  </div>
+  <aside class="notes">Built in three phases. Phase 1: Ralph loop for rapid prototyping — PROMPT.md drives each iteration. Phase 2: another Ralph loop for refactoring with a new spec. Phase 3: manual RPI for cleanup and polish. Each phase had its own prompt and spec files. Fresh context every iteration. Human review between every phase, not just at the end. 20s</aside>
+</section>
+
+<!-- Demo conversation -->
+<section>
+  <h3 style="margin-bottom:12px;">conversation flow</h3>
+  <div class="demo-chat">
+    <div class="demo-msg user fragment" data-fragment-index="0">hello!</div>
+    <div class="demo-msg agent fragment" data-fragment-index="1">
+      <span class="agent-tag">Greeter (no LLM)</span>
+      Welcome to taw9eel.com! How can I help you find something today?
+    </div>
+    <div class="demo-msg user fragment" data-fragment-index="2">I need a gift for my brother, he likes electronics</div>
+    <div class="demo-msg agent fragment" data-fragment-index="3">
+      <span class="agent-tag">Elicitor</span>
+      What's your budget? Any brand preferences? Is this for a birthday or Eid?
+    </div>
+    <div class="demo-msg user fragment" data-fragment-index="4">Around 400 KWD, Samsung, it's his birthday</div>
+    <div class="demo-msg agent fragment" data-fragment-index="5">
+      <span class="agent-tag">Searcher &rarr; Reranker &rarr; Diversity Selector</span>
+      1. Galaxy S25 Ultra — 389 KWD &nbsp; 2. Galaxy Tab S10 — 299 KWD<br>
+      3. Galaxy Watch 7 — 149 KWD &nbsp; 4. Galaxy Buds Pro — 79 KWD<br>
+      5. Samsung 65" OLED — 399 KWD
+    </div>
+  </div>
+  <div class="footnote">
+    <p>Kapetanovic, "Agentic CRS Prototype", Infobip Confluence, 2026</p>
+  </div>
+  <aside class="notes">The flow. User says hello — greeter fast-path responds instantly, no LLM call. User asks for a gift. Orchestrator classifies intent as vague, delegates to the elicitor. Elicitor asks culturally aware questions — Eid, not Christmas. User gives details. Searcher queries ChromaDB, reranker reorders by relevance via Cohere, diversity selector picks across categories. Not five phones — phones, tablets, watches, audio, TV. 25s</aside>
+</section>
+
+<!-- Design patterns and guardrails -->
+<section>
+  <h2>patterns and guardrails</h2>
+  <div style="max-width:650px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">protocol abstraction</span> — <code>VectorStore</code> protocol, swap ChromaDB → Elastic without touching agents</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">dependency injection</span> — <code>OrchestratorDeps</code> carries stores, clients, caches, no global state</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">guardrails</span> — off-topic refusal, bounded elicitor (max 6 msgs), rerank fallback on API failure</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">caching</span> — EmbeddingCache (LRU), ProfileCache (TTL-300s), no redundant API calls</p>
+  </div>
+  <aside class="notes">Design patterns and guardrails. Protocol abstraction: the VectorStore protocol lets us swap ChromaDB for Elastic without touching agent code. Dependency injection: OrchestratorDeps bundles everything — stores, HTTP clients, caches — no global state. Guardrails: the orchestrator refuses off-topic requests, the elicitor is bounded to 6 messages, and reranking falls back gracefully if Cohere fails. Caching avoids redundant embedding and profile lookups. 20s</aside>
+</section>
+
+<!-- Emanuel approves -->
+<section>
+  <h2>context engineering<br>built this in hours, not months</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">fully functional CRS prototype</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">built with ralph loops + RPI</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">Emanuel is thrilled</p>
+  </div>
+  <img class="fragment" data-fragment-index="3" src="figures/emanuel.png" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-height:90%; max-width:90%; border-radius:12px; z-index:10;" alt="Emanuel approves">
+  <aside class="notes">Fully functional prototype. Built with ralph loops and RPI. And Emanuel? He's thrilled. Hit next for proof. 15s</aside>
+</section>
+
+<!-- ============================================================ -->
+<!-- S9: PLAYBOOK + CLOSE                                         -->
+<!-- ============================================================ -->
+
+<!-- section header -->
+<section>
+  <h1>playbook</h1>
+  <div class="progress-bar">
+    <div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg done"></div><div class="seg current"></div>
+  </div>
+  <div class="progress-labels">
+    <span>intelligence</span><span>context</span><span>timeline</span><span>context rot</span><span>deal with it</span><span>demo</span><span class="current">playbook</span>
+  </div>
+  <aside class="notes">Actionable practices you can use tomorrow. 8s</aside>
+</section>
+
+<!-- agent hygiene -->
+<section>
+  <h2>agent hygiene</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">start with <code>/init</code>, then <strong>subtract</strong></p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">positive instructions, progressive disclosure</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">one task = one session, fresh windows</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">track progress in files, not chat</p>
+  </div>
+  <div class="footnote">
+    <p>Pocock, "A Complete Guide to AGENTS.md", aihero.dev, 2025</p>
+    <p>Mohsenimofidi et al., "Context Engineering for AI Agents in OSS", arXiv, 2025</p>
+  </div>
+  <aside class="notes">Agent hygiene. Start with /init, then subtract — the best instruction files are written through deletion. Positive instructions, progressive disclosure for complex repos. One task per session, always fresh windows. Track progress in files and git, never in chat. The conversation is ephemeral. Files persist. 20s</aside>
+</section>
+
+<!-- subtract -->
+<section>
+  <h2>subtract</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">over-specified context files reduce agent success by <strong>20%</strong></p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">compaction priority: <span class="orange" style="font-weight:700;">incorrect</span> → <strong>missing</strong> → noisy</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">caveat: tested with LLM-generated files only, not human-curated</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">less instruction = more autonomy</p>
+  </div>
+  <div class="footnote">
+    <p>Gloaguen et al., "Evaluating AGENTS.md", arXiv:2602.11988, 2025</p>
+    <p>HumanLayer, "Advanced Context Engineering for Coding Agents", github.com/humanlayer, 2025</p>
+  </div>
+  <aside class="notes">Subtract. Over-specified context files reduced agent success by 20%. When compacting: remove incorrect info first, then add what's missing, then trim noise. Caveat: tested with LLM-generated files only. Still, the signal is clear. Less instruction, more autonomy. 20s</aside>
+</section>
+
+<!-- test oracles -->
+<section>
+  <h2>test oracles</h2>
+  <div style="max-width:550px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;">tests are the contract between you and the agent</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;">no test = no success criterion</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">write tests before you let the agent implement</p>
+  </div>
+  <div class="footnote">
+    <p>Anthropic, "Harness Design for Long-Running Apps", anthropic.com/engineering, 2026</p>
+  </div>
+  <aside class="notes">Test oracles. Tests are the contract between you and the agent. If there's no test, there's no success criterion. Write tests before implementation. The agent knows when it's done because the tests pass. 15s</aside>
+</section>
+
+<!-- state of the art -->
+<section>
+  <h2>state of the art</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">recursive language models</span> — model manages its own context via sub-LLM calls, main window stays lean</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">test-time training</span> — compresses context into weights during inference, constant latency at any length</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;">both are <strong>automated context engineering</strong> — the model decides what stays and what goes</p>
+    <p class="fragment" data-fragment-index="3" style="font-size:0.85em;">until these ship: context engineering is your edge</p>
+  </div>
+  <div class="footnote">
+    <p>Zhang et al., "Recursive Language Models", MIT CSAIL, 2025</p>
+    <p>Tandon et al., "Test-Time Training for Long Context", Stanford/Berkeley/NVIDIA, 2025</p>
+  </div>
+  <aside class="notes">State of the art in context engineering research. RLM: the model manages its own context through sub-LLM calls. The main window stays lean. TTT: compresses context into model weights during inference. Constant latency regardless of length. Both are automated context engineering — the model decides what stays and what goes. Until they ship, the manual version is your competitive edge. 25s</aside>
+</section>
+
+<!-- three takeaways -->
+<section>
+  <h2>three takeaways</h2>
+  <div style="max-width:600px; margin:20px auto; text-align:left;">
+    <p class="fragment" data-fragment-index="0" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">1.</span> context engineering is the #1 AI-era developer skill</p>
+    <p class="fragment" data-fragment-index="1" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">2.</span> LLMs are stateless: input quality = output quality</p>
+    <p class="fragment" data-fragment-index="2" style="font-size:0.85em;"><span class="orange" style="font-weight:700;">3.</span> structure &gt; volume</p>
+  </div>
+  <aside class="notes">Three takeaways. One: context engineering is THE developer skill for the AI era. Two: LLMs are stateless — input quality determines output quality. Three: structure beats volume. Better context, not more context. 20s</aside>
+</section>
+
+<!-- thank you -->
+<section>
+  <h1>thank you</h1>
+  <p>antekapetanovic.com</p>
+  <aside class="notes">Thank you. Context engineering — not a bigger model, better structure. Questions? 15s</aside>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  transition: 'none',
+  transitionSpeed: 'fast',
+  backgroundTransition: 'none',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1920,
+  height: 1080,
+  margin: 0.04,
+  plugins: [ RevealNotes ]
+});
+</script>
+</body>
+</html>
